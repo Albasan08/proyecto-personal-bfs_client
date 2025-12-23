@@ -1,0 +1,2 @@
+dependencias:
+firebase, react-router
