@@ -1,4 +1,4 @@
 dependencias:
-firebase, react-router
+firebase, react-router, prop-types
 
 crear proyecto en firebase

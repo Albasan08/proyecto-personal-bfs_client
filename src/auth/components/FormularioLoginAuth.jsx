@@ -4,6 +4,8 @@ import { useState } from "react";
 
 // IMPORTACIONES PROPIAS
 import { useLoginGoogle } from "../hooks/useLoginGoogle";
+import { useLoginEmailContra } from "../hooks/useLoginEmailContra";
+import { ErroresAuth } from "./ErroresAuth";
 
 export const FormularioLoginAuth = () => {
 
@@ -11,11 +13,16 @@ export const FormularioLoginAuth = () => {
     const [emailLogin, setEmailLogin] = useState("");
     const [contraseniaLogin, setContraseniaLogin] = useState("");
 
-    // Requerir función login por Google
-    const { loginConGoogle } = useLoginGoogle();
+    // Requerir función login con Google
+    const { loginConGoogle, errorGoogle } = useLoginGoogle();
 
-    // Evento para capturar los datos de los campos
-    const handleDatosFormularioLogin = (event) => {
+    // Requerir función login con email y contraseña
+    const { inicioSesionEmailContra, errorEmail } = useLoginEmailContra();
+
+    // Recoger errores
+
+    // Evento para capturar los datos de los campos y conectar con hook de login con email y contraseña
+    const handleDatosFormularioLogin = async (event) => {
         event.preventDefault();
 
         // Capturar datos formulario
@@ -27,6 +34,14 @@ export const FormularioLoginAuth = () => {
         // Setear estados
         setEmailLogin(emailLogin);
         setContraseniaLogin(contraseniaLogin);
+
+        // Conectar con hook
+        try {
+            const user = await inicioSesionEmailContra(emailLogin, contraseniaLogin);
+        } catch(error) {
+            console.log(error)
+            // Pendiente gestionar error
+        }
     }
 
   return (
@@ -35,6 +50,7 @@ export const FormularioLoginAuth = () => {
             <h1>Inicio de sesión</h1>
             <h2>Bienvenido de nuevo a tu nueva experiencia</h2>
         </div>
+
         <section>
             <form className="formularioLogin flexContainer" onSubmit={handleDatosFormularioLogin}>
                 <label htmlFor="emailLogin">Correo electrónico:</label>
@@ -47,6 +63,11 @@ export const FormularioLoginAuth = () => {
                 <button type="button" id="botonLoginGoogle" onClick={loginConGoogle}>Iniciar sesión con Google</button>
             </form>
         </section>
+
+        {/*Gestión de errores - Si hay errores en el hook mostrarlos*/}
+        <ErroresAuth errorMessage={errorEmail?.message} />
+        <ErroresAuth errorMessage={errorGoogle?.message} />
+
         <div>
             <p>¿No tienes cuenta?</p>
             <Link to="/auth/register" className="link">Crear cuenta</Link>

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { useRegisterGoogle } from "../hooks/useRegisterGoogle";
+import { ErroresAuth } from "./ErroresAuth";
 
 // IMPORTACIONES PROPIAS
 
@@ -16,11 +17,11 @@ export const FormularioRegisterAuth = () => {
     const [apellidoRegister, setApellidoRegister] = useState("");
     const [provinciaRegister, setProvinciaRegister] = useState(null);
 
-    // Usar hook de registrar
-    const { registrarConLogin } = useRegisterGoogle();
+    // Usar hook de registrar con email y contraseña
+    const { registrarConLogin, error } = useRegisterGoogle();
 
 
-    //LISTADO PROVINCIAS PARA PINTAR EN EL CAMPO SELECT
+    // Lista de provincias para input SELECT
     const provinciasEspania = [
         "Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", 
         "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "Cuenca", "Girona", "Granada", 
@@ -62,8 +63,7 @@ export const FormularioRegisterAuth = () => {
         try {
             const user = await registrarConLogin(emailRegister, contraseniaRegister, nombreRegister, apellidoRegister, provinciaRegister);
         } catch(error) {
-            console.log(error);
-            // Pendiente gestionar error
+            setError(error)
         }
     }
 
@@ -73,6 +73,7 @@ export const FormularioRegisterAuth = () => {
             <h1>Crea una cuenta nueva</h1>
             <h2>Únete a la mejor experiencia de enoturismo de Rioja Alavesa</h2>
         </div>
+
         <section>
             <form className="formularioRegister flexContainer" onSubmit={handleDatosFormularioRegister}>
                 <fieldset>
@@ -106,9 +107,13 @@ export const FormularioRegisterAuth = () => {
                 </fieldset>
                     
                 <button type="submit" id="botonRegister">Crear cuenta</button>
-                <button type="button" id="botonRegisterGoogle">Crear cuenta con Google</button>
             </form>
         </section>
+
+        {/*Gestión de errores - Si hay errores en el hook mostrarlos*/}
+        {<ErroresAuth errorMessage={error?.message}/>}
+
+
         <div>
             <p>¿Ya tienes cuenta?</p>
             <Link to="/auth/login" className="link">Iniciar sesión</Link>

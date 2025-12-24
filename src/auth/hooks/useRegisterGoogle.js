@@ -6,10 +6,10 @@ import { useState } from "react";
 
 export const useRegisterGoogle = () => {
     
-    //Estados de userGoogle y error
+    //Estados
     const [error, setError] = useState(null);
     const [userGoogleNew, setUserGoogleNew] = useState(null);
-    const [uidGoogle,setUidGoogle] = useState("");
+    const [uidGoogle, setUidGoogle] = useState("");
 
     const auth = getAuth();
 
@@ -36,6 +36,7 @@ export const useRegisterGoogle = () => {
                 provincia_user: provinciaRegister,
                 rol_user: "user"
             }
+
             //console.log(newRegisterUser)
 
             // PENDIENTE MANDAR A LA BASE DE DATOS
@@ -44,7 +45,7 @@ export const useRegisterGoogle = () => {
         })
         .catch((error) => {
             const errorCode = error.code;
-            console.log(errorCode)
+            //console.log(errorCode)
             const errorMessage = error.message;
             //console.log(errorMessage);
             //Cambiar estados
@@ -57,7 +58,7 @@ export const useRegisterGoogle = () => {
     {
         registrarConLogin,
         error,
-        userGoogleNew
+        userGoogleNew,
     }
   )
 }

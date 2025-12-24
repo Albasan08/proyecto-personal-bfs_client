@@ -5,7 +5,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 export const useLoginGoogle = () => {
 
     //Estados de userGoogle, error y token
-    const [error, setError] = useState(null);
+    const [errorGoogle, setErrorGoogle] = useState(null);
     const [userGoogle, setUserGoogle] = useState(null);
     const [tokenGoogle, setTokenGoogle] = useState(null);
 
@@ -26,11 +26,9 @@ export const useLoginGoogle = () => {
             // Cambiar estados
             setUserGoogle(user);
             setTokenGoogle(token);
-            // Por si acaso
-            setError(null);
+            setErrorGoogle(null);
 
         } catch(error) {
-
             const errorCode = error.code;
             //console.log(errorCode)
             const errorMessage = error.message;
@@ -43,8 +41,9 @@ export const useLoginGoogle = () => {
             // PENDIENTE GESTIONAR ERRORES
 
             // Cambiar estados
-            setError(error);
+            setErrorGoogle(error);
             setUserGoogle(null);
+            setTokenGoogle(null);
         }
     }
   return (
@@ -52,7 +51,7 @@ export const useLoginGoogle = () => {
         loginConGoogle,
         tokenGoogle,
         userGoogle,
-        error
+        errorGoogle
     }
   )
 }

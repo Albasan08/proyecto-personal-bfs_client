@@ -38,6 +38,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-refresh", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:0.4.26"],\
           ["firebase", "npm:12.7.0"],\
           ["globals", "npm:16.5.0"],\
+          ["prop-types", "npm:15.8.1"],\
           ["react", "npm:19.2.3"],\
           ["react-dom", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:19.2.3"],\
           ["react-router", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:7.11.0"],\
@@ -60,6 +61,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-refresh", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:0.4.26"],\
           ["firebase", "npm:12.7.0"],\
           ["globals", "npm:16.5.0"],\
+          ["prop-types", "npm:15.8.1"],\
           ["react", "npm:19.2.3"],\
           ["react-dom", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:19.2.3"],\
           ["react-router", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:7.11.0"],\
@@ -3453,6 +3455,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["loose-envify", [\
+      ["npm:1.4.0", {\
+        "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/loose-envify-npm-1.4.0-6307b72ccf-10c0.zip/node_modules/loose-envify/",\
+        "packageDependencies": [\
+          ["js-tokens", "npm:4.0.0"],\
+          ["loose-envify", "npm:1.4.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["lru-cache", [\
       ["npm:11.2.4", {\
         "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/lru-cache-npm-11.2.4-3f72660965-10c0.zip/node_modules/lru-cache/",\
@@ -3662,6 +3674,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["object-assign", [\
+      ["npm:4.1.1", {\
+        "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/object-assign-npm-4.1.1-1004ad6dec-10c0.zip/node_modules/object-assign/",\
+        "packageDependencies": [\
+          ["object-assign", "npm:4.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["optionator", [\
       ["npm:0.9.4", {\
         "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/optionator-npm-0.9.4-1f114b00e8-10c0.zip/node_modules/optionator/",\
@@ -3804,6 +3825,18 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["prop-types", [\
+      ["npm:15.8.1", {\
+        "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/prop-types-npm-15.8.1-17c71ee7ee-10c0.zip/node_modules/prop-types/",\
+        "packageDependencies": [\
+          ["loose-envify", "npm:1.4.0"],\
+          ["object-assign", "npm:4.1.1"],\
+          ["prop-types", "npm:15.8.1"],\
+          ["react-is", "npm:16.13.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["protobufjs", [\
       ["npm:7.5.4", {\
         "packageLocation": "./.yarn/unplugged/protobufjs-npm-7.5.4-4d6f681551/node_modules/protobufjs/",\
@@ -3862,6 +3895,15 @@ const RAW_RUNTIME_STATE =
         "packagePeers": [\
           "@types/react",\
           "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-is", [\
+      ["npm:16.13.1", {\
+        "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/react-is-npm-16.13.1-a9b9382b4f-10c0.zip/node_modules/react-is/",\
+        "packageDependencies": [\
+          ["react-is", "npm:16.13.1"]\
         ],\
         "linkType": "HARD"\
       }]\
