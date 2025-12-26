@@ -2,9 +2,11 @@
 import { useState } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 
-
+// IMPORTACIONES PROPIAS
+const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
 export const useLogout = () => {
+  console.log("ENTRANDO A HOOK DE LOGOUT")
   // Estados de userGoogle y error
   const [error, setError] = useState(null);
   const [userGoogle, setUserGoogle] = useState(null);

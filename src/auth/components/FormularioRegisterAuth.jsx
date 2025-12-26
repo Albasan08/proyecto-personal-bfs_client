@@ -81,14 +81,14 @@ export const FormularioRegisterAuth = () => {
 
   return (
     <>
+        <section>
         <div>
             <h1>Crea una cuenta nueva</h1>
             <h2>Únete a la mejor experiencia de enoturismo de Rioja Alavesa</h2>
         </div>
 
-        <section>
-            <form className="formularioRegister flexContainer" onSubmit={handleDatosFormularioRegister}>
-                <fieldset>
+        <article>
+            <form className="formulario-auth flex-container" onSubmit={handleDatosFormularioRegister}>
                     <label htmlFor="emailRegister">Correo electrónico:</label>
                     <input type="text" id="emailRegister" name="emailRegister" required placeholder="ejemplo@ejemplo.com"></input>
     
@@ -97,9 +97,7 @@ export const FormularioRegisterAuth = () => {
 
                     <label htmlFor="contraseniaRegister2">Repetir contraseña:</label>
                     <input type="password" id="contraseniaRegister2" name="contraseniaRegister2" required placeholder="ContraseñaEjemplo1@"></input>
-                </fieldset>
 
-                <fieldset>
                     <label htmlFor="nombreRegister">Nombre:</label>
                     <input type="text" id="nombreRegister" name="nombreRegister" required placeholder="Peio"></input>
     
@@ -114,13 +112,11 @@ export const FormularioRegisterAuth = () => {
                                 {provincia}
                             </option>
                         ))}
-
                     </select>
-                </fieldset>
                     
-                <button type="submit" id="botonRegister">Crear cuenta</button>
+                <button type="submit" id="botonRegister" className="btn-principal">Crear cuenta</button>
             </form>
-        </section>
+        </article>
 
         {/*Gestión de errores - Si hay errores en el hook mostrarlos (de firebase) */}
         {<ErroresAuth errorMessage={error?.message}/>}
@@ -132,6 +128,7 @@ export const FormularioRegisterAuth = () => {
             <p>¿Ya tienes cuenta?</p>
             <Link to="/auth/login" className="link">Iniciar sesión</Link>
         </div>
+        </section>
     </>
   )
 }

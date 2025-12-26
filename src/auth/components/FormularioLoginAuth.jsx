@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useLoginGoogle } from "../hooks/useLoginGoogle";
 import { useLoginEmailContra } from "../hooks/useLoginEmailContra";
 import { ErroresAuth } from "./ErroresAuth";
+import './FormularioLoginAuth.scss'
 
 export const FormularioLoginAuth = () => {
 
@@ -50,23 +51,24 @@ export const FormularioLoginAuth = () => {
 
   return (
     <>  
+    <section>
         <div>
             <h1>Inicio de sesión</h1>
             <h2>Bienvenido de nuevo a tu nueva experiencia</h2>
         </div>
 
-        <section>
-            <form className="formularioLogin flexContainer" onSubmit={handleDatosFormularioLogin}>
+        <article>
+            <form className="formulario-auth flex-container" onSubmit={handleDatosFormularioLogin}>
                 <label htmlFor="emailLogin">Correo electrónico:</label>
                 <input type="text" id="emailLogin" name="emailLogin" required placeholder="ejemplo@ejemplo.com"></input>
 
                 <label htmlFor="contraseniaLogin">Contraseña:</label>
                 <input type="password" id="contraseniaLogin" name="contraseniaLogin" required placeholder="ContraseñaEjemplo1@"></input>
                 
-                <button type="submit" id="botonLogin">Iniciar sesión</button>
-                <button type="button" id="botonLoginGoogle" onClick={loginConGoogle}>Iniciar sesión con Google</button>
+                <button type="submit" id="botonLogin" className="btn-principal">Iniciar sesión</button>
+                <button type="button" id="botonLoginGoogle" className="btn-secundario" onClick={loginConGoogle}>Iniciar sesión con Google</button>
             </form>
-        </section>
+        </article>
 
         {/*Gestión de errores - Si hay errores en el hook mostrarlos*/}
         <ErroresAuth errorMessage={errorEmail?.message} />
@@ -76,6 +78,8 @@ export const FormularioLoginAuth = () => {
             <p>¿No tienes cuenta?</p>
             <Link to="/auth/register" className="link">Crear cuenta</Link>
         </div>
+
+    </section>
     </>
   )
 }

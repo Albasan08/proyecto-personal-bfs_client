@@ -1,0 +1,131 @@
+section {
+    width: 100%;
+
+    background-color: #ffff;
+
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 2rem 1.5rem;
+    margin: 0 auto;
+}
+
+section article {
+    width: 100%;
+    margin: 0 auto;
+}
+
+body {
+    // background-color solo acepta colores planos
+    background: linear-gradient(
+        to bottom,
+        #FFFCF9 0%, 
+        #F7EFE7 40%, 
+        #F3E7DB 100%
+    );
+}
+
+h1 {
+    color: var(--primary);
+}
+
+h2 {
+    color: var(--tan);
+}
+
+p, 
+label {
+    color: var(--text);
+}
+
+label {
+    text-align: left;
+}
+
+.formulario-auth {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formulario-auth input {
+    width: 100%;
+    padding: 1.2rem 1rem;
+
+    background: #ffffff;
+    border-radius: 0.75rem;
+    border: 1.5px solid var(--tan);
+
+    color: #333; 
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+}
+
+.formulario-auth input::placeholder { 
+    color: var(--tan); 
+}
+
+.formulario-auth input:focus { 
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(162, 37, 34, 0.15);
+}
+
+a {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+a:hover {
+    color: var(--brown);
+}
+
+@media (min-width: var(--breakpoint-tablet)) {
+    section {
+       padding: 3rem 2rem;
+       width: 85%;
+    }
+
+    .formulario-auth {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .formulario-auth select {
+        font-size: 1.05rem;
+        padding: 1.3rem 1,1rem;
+    }
+}
+
+@media (min-width: var(--breakpoint-desktop)) {
+    section {
+        padding: 3rem 3rem;
+        width: 80%;
+    }
+
+    .formulario-auth {
+        width: 80%;
+    }
+
+    .formulario-auth select {
+        font-size: 1.1rem;
+        padding: 1.4rem 1.2rem;
+    }
+}
+
+@media (min-width: var(--breakpoint-landscape)) { 
+    section {
+        padding: 3rem 3rem;
+        width: 75%;
+    }
+    
+    .formulario-auth {
+        width: 70%;
+    }
+}
