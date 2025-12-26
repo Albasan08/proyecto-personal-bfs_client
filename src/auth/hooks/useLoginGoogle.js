@@ -2,6 +2,9 @@
 import { useState } from 'react';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
+// IMPORTACIONES PROPIAS
+const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
+
 export const useLoginGoogle = () => {
 
     //Estados de userGoogle, error y token
@@ -28,18 +31,44 @@ export const useLoginGoogle = () => {
             setTokenGoogle(token);
             setErrorGoogle(null);
 
+            // Objeto que se envía al back
+            const LoginUser = {
+                email_user: user.email,
+                token: token
+            }
+            //console.log(LoginUser);
+
+            // Conectar con BBDD
+            const conexionBackBBDD = async () => {
+                try {
+                const respuesta = await fetch(`${APIKEY_BACK}auth/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify(LoginUser)
+                });
+
+                const data = await respuesta.json();
+                //console.log(data);
+
+                // Mantener estado
+                setErrorGoogle(null);
+                setUserGoogle(userGoogle); 
+                setTokenGoogle(tokenGoogle);
+
+            } catch (error) {
+
+                setErrorGoogle(error);
+                setUserGoogle(null); 
+                setTokenGoogle(null);
+
+            }
+        }
+
+        return conexionBackBBDD();
+
+
         } catch(error) {
-            const errorCode = error.code;
-            //console.log(errorCode)
-            const errorMessage = error.message;
-            //console.log(errorMessage)
-            const emailUserError = error.customData.email;
-            //console.log(emailUserError)
-            const credentialError = GoogleAuthProvider.credentialFromError(error);
-            //console.log(credentialError)
-
-            // PENDIENTE GESTIONAR ERRORES
-
             // Cambiar estados
             setErrorGoogle(error);
             setUserGoogle(null);

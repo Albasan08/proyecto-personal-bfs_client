@@ -1,10 +1,11 @@
 // IMPORTACIONES DE TERCEROS
 import { useState } from "react";
 import { Link } from "react-router";
-import { useRegisterGoogle } from "../hooks/useRegisterGoogle";
-import { ErroresAuth } from "./ErroresAuth";
+
 
 // IMPORTACIONES PROPIAS
+import { useRegisterGoogle } from "../hooks/useRegisterGoogle";
+import { ErroresAuth } from "./ErroresAuth";
 
 export const FormularioRegisterAuth = () => {
 
@@ -16,6 +17,8 @@ export const FormularioRegisterAuth = () => {
     const [nombreRegister, setNombreRegister] = useState("");
     const [apellidoRegister, setApellidoRegister] = useState("");
     const [provinciaRegister, setProvinciaRegister] = useState(null);
+
+    const [errorConexion, setErrorConexion] = useState(null);
 
     // Usar hook de registrar con email y contraseña
     const { registrarConLogin, error } = useRegisterGoogle();
@@ -35,35 +38,44 @@ export const FormularioRegisterAuth = () => {
     const handleDatosFormularioRegister = async (event) => {
         event.preventDefault();
 
+        // Para limpiar los errores
+        setErrorConexion(errorConexion);
+
         // Capturar datos formulario
-        const emailRegister = event.target.emailRegister.value;
-        //console.log(emailRegister);
-        const contraseniaRegister = event.target.contraseniaRegister.value;
-        //console.log(contraseniaRegister);
-        const contraseniaRegister2 = event.target.contraseniaRegister2.value;
-        //console.log(contraseniaRegister2);
+        const emailRegister = event.target.emailRegister.value.trim().toLowerCase();
+        const contraseniaRegister = event.target.contraseniaRegister.value.trim();
+        const contraseniaRegister2 = event.target.contraseniaRegister2.value.trim();
 
         const nombreRegister = event.target.nombreRegister.value;
-        //console.log(nombreRegister);
+        const nombreLimpio = nombreRegister.trim().charAt(0).toUpperCase() + nombreRegister.slice(1).toLowerCase();
+
         const apellidoRegister = event.target.apellidoRegister.value;
-        //console.log(apellidoRegister);
+        const apellidoLimpio = apellidoRegister.trim().charAt(0).toUpperCase() + apellidoRegister.slice(1).toLowerCase();
+        
         const provinciaRegister = event.target.provinciaRegister.value;
-        //console.log(provinciaRegister);
 
         // Setear estados
         setEmailRegister(emailRegister);
         setContraseniaRegister(contraseniaRegister);
         setContraseniaRegister2(contraseniaRegister2);
 
-        setNombreRegister(nombreRegister);
-        setApellidoRegister(apellidoRegister);
+        setNombreRegister(nombreLimpio);
+        setApellidoRegister(apellidoLimpio);
         setProvinciaRegister(provinciaRegister);
+
+        // Si las contraseñas no coinciden
+        if (contraseniaRegister !== contraseniaRegister2) { 
+            setErrorConexion("Las contraseñas no coinciden"); 
+
+            // Borrar el error después de varios segundos para que no permanezca en pantalla
+            setTimeout(() => { setErrorConexion(null); }, 3000); // 3 segundos
+        }
         
         // Conectar con hook
         try {
-            const user = await registrarConLogin(emailRegister, contraseniaRegister, nombreRegister, apellidoRegister, provinciaRegister);
+            const user = await registrarConLogin(emailRegister, contraseniaRegister, contraseniaRegister2, nombreRegister, apellidoRegister, provinciaRegister);
         } catch(error) {
-            setError(error)
+            setErrorConexion(errorConexion);
         }
     }
 
@@ -81,10 +93,10 @@ export const FormularioRegisterAuth = () => {
                     <input type="text" id="emailRegister" name="emailRegister" required placeholder="ejemplo@ejemplo.com"></input>
     
                     <label htmlFor="contraseniaRegister">Contraseña:</label>
-                    <input type="text" id="contraseniaRegister" name="contraseniaRegister" required placeholder="ContraseñaEjemplo1@"></input>
+                    <input type="password" id="contraseniaRegister" name="contraseniaRegister" required placeholder="ContraseñaEjemplo1@"></input>
 
                     <label htmlFor="contraseniaRegister2">Repetir contraseña:</label>
-                    <input type="text" id="contraseniaRegister2" name="contraseniaRegister2" required placeholder="ContraseñaEjemplo1@"></input>
+                    <input type="password" id="contraseniaRegister2" name="contraseniaRegister2" required placeholder="ContraseñaEjemplo1@"></input>
                 </fieldset>
 
                 <fieldset>
@@ -110,9 +122,11 @@ export const FormularioRegisterAuth = () => {
             </form>
         </section>
 
-        {/*Gestión de errores - Si hay errores en el hook mostrarlos*/}
+        {/*Gestión de errores - Si hay errores en el hook mostrarlos (de firebase) */}
         {<ErroresAuth errorMessage={error?.message}/>}
-
+        
+        {/*Gestión de errores de que las contraseñas no coinciden */}
+        {errorConexion && ( <p className="error">{errorConexion}</p> )}
 
         <div>
             <p>¿Ya tienes cuenta?</p>

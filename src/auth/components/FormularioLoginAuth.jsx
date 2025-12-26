@@ -12,6 +12,7 @@ export const FormularioLoginAuth = () => {
     // Requerir estados de los campos del formulario que se actualizarán después
     const [emailLogin, setEmailLogin] = useState("");
     const [contraseniaLogin, setContraseniaLogin] = useState("");
+    const [error, setError] = useState(null);
 
     // Requerir función login con Google
     const { loginConGoogle, errorGoogle } = useLoginGoogle();
@@ -24,6 +25,9 @@ export const FormularioLoginAuth = () => {
     // Evento para capturar los datos de los campos y conectar con hook de login con email y contraseña
     const handleDatosFormularioLogin = async (event) => {
         event.preventDefault();
+
+        // Para limpiar los errores
+        setError(null); 
 
         // Capturar datos formulario
         const emailLogin = event.target.emailLogin.value;
@@ -57,7 +61,7 @@ export const FormularioLoginAuth = () => {
                 <input type="text" id="emailLogin" name="emailLogin" required placeholder="ejemplo@ejemplo.com"></input>
 
                 <label htmlFor="contraseniaLogin">Contraseña:</label>
-                <input type="text" id="contraseniaLogin" name="contraseniaLogin" required placeholder="ContraseñaEjemplo1@"></input>
+                <input type="password" id="contraseniaLogin" name="contraseniaLogin" required placeholder="ContraseñaEjemplo1@"></input>
                 
                 <button type="submit" id="botonLogin">Iniciar sesión</button>
                 <button type="button" id="botonLoginGoogle" onClick={loginConGoogle}>Iniciar sesión con Google</button>

@@ -1,8 +1,9 @@
 // IMPORTACIONES DE TERCEROS
-import './App.css'
+import "./firebase/firebaseConfig"
 
 // IMPORTACIONES PROPIAS
-import "./firebase/firebaseConfig"
+import './App.css'
+import { AuthProvider } from './contexts/AuthProvider'
 import { AppRoutes } from './routes/AppRoutes'
 
 
@@ -10,7 +11,9 @@ function App() {
 
   return (
     <>
+    <AuthProvider>
     <AppRoutes />
+    </AuthProvider>
     </>
   )
 }
