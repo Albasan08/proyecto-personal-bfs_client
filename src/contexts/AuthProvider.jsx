@@ -8,13 +8,13 @@ import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({ children }) => {
 
-    // Crear el estado inicial
-    const [userGoogle, setUserGoogle] = useState(null);
-    const [error, setError] = useState(null);
+  // Crear el estado inicial
+  const [userGoogle, setUserGoogle] = useState(null);
+  const [error, setError] = useState(null);
 
-    const auth = getAuth();
+  const auth = getAuth();
 
-    useEffect(() => {
+  useEffect(() => {
 
     const unsubscribe = onAuthStateChanged(auth, async (userGoogle) => { // Aunque se refresque la página el usuario sigue logueado
       
@@ -32,6 +32,8 @@ export const AuthProvider = ({ children }) => {
       }
 
     });
+
+    return unsubscribe();
 
   }, []); // Solo al principio, cuando se carga el componente por primera vez
 

@@ -1,4 +1,4 @@
 dependencias:
-firebase, react-router, prop-types, sass
-
+firebase, react-router-dom, prop-types, sass
+tiptap, tiptap starterkit @tiptap/pm js-cookie 
 crear proyecto en firebase

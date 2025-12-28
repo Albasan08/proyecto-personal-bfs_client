@@ -64,7 +64,6 @@ select {
 
 }
 
-
 select:hover {
     border-color: var(--primary);
 }
@@ -125,6 +124,10 @@ p, input {
     margin-bottom: 1rem;
 }
 
+.errores p {
+    color: red;
+    font-family: var(--font-text);
+}
 
 article {
     margin-bottom: 2rem;

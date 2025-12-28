@@ -1,9 +1,12 @@
 // IMPORTACIONES DE TERCEROS
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // IMPORTACIONES PROPIAS
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
+import { redirigirPorRol } from "../helpers/redirigirPorRol";
+
 
 export const useLoginEmailContra = () => {
 
@@ -12,6 +15,7 @@ export const useLoginEmailContra = () => {
   const [tokenGoogle, setTokenGoogle] = useState(null);
 
   const auth = getAuth();
+  const navigate = useNavigate();
 
   const inicioSesionEmailContra = (emailLogin, contraseniaLogin) => {
 
@@ -19,7 +23,7 @@ export const useLoginEmailContra = () => {
       .then((result) => {
 
         const user = result.user;
-        console.log(user);
+        //console.log(user);
         const token = user.accessToken;
         //console.log(token)
 
@@ -31,11 +35,12 @@ export const useLoginEmailContra = () => {
         const LoginUser = {
           email_user: emailLogin,
           contrasenia_user: contraseniaLogin,
-          token: user.accessToken
+          token: user.accessToken,
+          uid_user: user.uid
         }
-        console.log(LoginUser)
+        //console.log(LoginUser)
 
-        // Conexión con la BBDD desde el back
+        // Conexión con la BBDD desde el back y redirigir
         const conexionBackBBDD = async () => {
           try {
             const respuesta = await fetch(`${APIKEY_BACK}auth/login`, {
@@ -48,10 +53,8 @@ export const useLoginEmailContra = () => {
             const data = await respuesta.json();
             //console.log(data);
 
-            // Mantener estado
-            setErrorEmail(null);
-            setUserGoogle(userGoogle); 
-            setTokenGoogle(tokenGoogle);
+            const redirect = await redirigirPorRol(); 
+            navigate(redirect, { replace: true });
 
           } catch (error) {
 
@@ -63,8 +66,8 @@ export const useLoginEmailContra = () => {
         }
 
         return conexionBackBBDD();
-      })
 
+      })
 
       .catch((error) => {
         // Cambiar estados

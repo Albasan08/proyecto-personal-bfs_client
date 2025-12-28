@@ -1,9 +1,11 @@
 // IMPORTACIONES DE TERCEROS
 import { useState } from 'react';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
 
 // IMPORTACIONES PROPIAS
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
+import { redirigirPorRol } from "../helpers/redirigirPorRol";
 
 export const useLoginGoogle = () => {
 
@@ -14,6 +16,7 @@ export const useLoginGoogle = () => {
 
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
+    const navigate = useNavigate();
 
     const loginConGoogle = async () => {
         try {
@@ -34,39 +37,24 @@ export const useLoginGoogle = () => {
             // Objeto que se envía al back
             const LoginUser = {
                 email_user: user.email,
-                token: token
+                token: token,
+                uid_user: user.uid
             }
             //console.log(LoginUser);
 
             // Conectar con BBDD
-            const conexionBackBBDD = async () => {
-                try {
-                const respuesta = await fetch(`${APIKEY_BACK}auth/login`, {
+            const respuesta = await fetch(`${APIKEY_BACK}auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
                 body: JSON.stringify(LoginUser)
-                });
+            });
 
-                const data = await respuesta.json();
-                //console.log(data);
-
-                // Mantener estado
-                setErrorGoogle(null);
-                setUserGoogle(userGoogle); 
-                setTokenGoogle(tokenGoogle);
-
-            } catch (error) {
-
-                setErrorGoogle(error);
-                setUserGoogle(null); 
-                setTokenGoogle(null);
-
-            }
-        }
-
-        return conexionBackBBDD();
-
+            const data = await respuesta.json();
+            //console.log(data);
+            // Redirigir por rol
+            const redirect = await redirigirPorRol(); 
+            navigate(redirect, { replace: true });
 
         } catch(error) {
             // Cambiar estados

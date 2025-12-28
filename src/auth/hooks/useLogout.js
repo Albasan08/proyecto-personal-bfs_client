@@ -1,56 +1,44 @@
 // IMPORTACIONES DE TERCEROS
 import { useState } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
 
 // IMPORTACIONES PROPIAS
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
 export const useLogout = () => {
-  console.log("ENTRANDO A HOOK DE LOGOUT")
+  //console.log("ENTRANDO A HOOK DE LOGOUT")
   // Estados de userGoogle y error
   const [error, setError] = useState(null);
   const [userGoogle, setUserGoogle] = useState(null);
 
   const auth = getAuth();
+  const navigate = useNavigate();
 
   const cerrarSesionGoogle = async () => {
 
     try {
-      const result = await signOut(auth);
+      await signOut(auth);
       //console.log("SESIÓN CERRADA DESDE HOOK USELOGOUT")
 
-      // Conectar con back para borrar cookies// Conectar con BBDD
-      const conexionBack = async () => {
-        try {
-          const respuesta = await fetch(`${APIKEY_BACK}auth/logout`, {
-            method: "POST",
-            credentials: "include",
-          });
+      // Conectar con back para borrar cookies y redirigir
+      const respuesta = await fetch(`${APIKEY_BACK}auth/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
 
-          // Mantener estado
-          setError(null);
-          setUserGoogle(null);
-
-        } catch (error) {
-
-          setError(error);
-          setUserGoogle(null);
-
-        }
-      }
-
-      // Cambiar estados
-      setUserGoogle(null)
+      const data = await respuesta.json(); 
+      // Mantener estado
       setError(null);
+      setUserGoogle(null);
 
-      conexionBack();
+      navigate(data.redirect, { replace: true });
 
     } catch (error) {
 
       setError(error);
 
     }
-
   }
   return (
     {

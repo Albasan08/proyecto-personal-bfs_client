@@ -1,9 +1,11 @@
 // IMPORTACIONES DE TERCEROS
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // IMPORTACIONES PROPIAS
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
+import { redirigirPorRol } from "../helpers/redirigirPorRol";
 
 export const useRegisterGoogle = () => {
     
@@ -14,10 +16,12 @@ export const useRegisterGoogle = () => {
     const [token, setToken] = useState("");
 
     const auth = getAuth();
+    const navigate = useNavigate();
 
     const registrarConLogin = (emailRegister, contraseniaRegister, contraseniaRegister2, nombreRegister, apellidoRegister, provinciaRegister) => {
 
         const result = createUserWithEmailAndPassword(auth, emailRegister, contraseniaRegister)
+
         .then((result) => {
             //console.log(result);
             const user = result.user;
@@ -44,7 +48,7 @@ export const useRegisterGoogle = () => {
             }
             //console.log(newRegisterUser)
 
-            // Conexión con la BBDD desde el back
+            // Conexión con la BBDD desde el back y redirigir
             const conexionBackBBDD = async () => {
                 try {
                     const respuesta = await fetch(`${APIKEY_BACK}auth/register`, { 
@@ -56,9 +60,8 @@ export const useRegisterGoogle = () => {
 
                     const data = await respuesta.json();
                     //console.log(data);
-
-                    // Mantener estado
-                    setError(null);
+                    const redirect = await redirigirPorRol(); 
+                    navigate(redirect, { replace: true });
 
                 } catch(error) {
 
@@ -68,9 +71,9 @@ export const useRegisterGoogle = () => {
             }
 
             return conexionBackBBDD();
+
         })
         .catch((error) => {
-
             //Cambiar estados
             setError(error);
             setUserGoogleNew(null);
