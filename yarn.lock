@@ -11,6 +11,8 @@ __metadata:
   dependencies:
     "@eslint/js": "npm:^9.39.1"
     "@tiptap/core": "npm:^3.14.0"
+    "@tiptap/extension-italic": "npm:^3.14.0"
+    "@tiptap/extension-text-style": "npm:^3.14.0"
     "@tiptap/pm": "npm:^3.14.0"
     "@tiptap/react": "npm:^3.14.0"
     "@tiptap/starter-kit": "npm:^3.14.0"
@@ -1809,6 +1811,15 @@ __metadata:
   peerDependencies:
     "@tiptap/core": ^3.14.0
   checksum: 10c0/150b93c13f7d985fa7433a27020dc47dfacf36c00ba24360f1d8796c5d18bde5ecc77c510d617144ae665de996b0c94c2de253c9b02386c312ff8904fc69907a
+  languageName: node
+  linkType: hard
+
+"@tiptap/extension-text-style@npm:^3.14.0":
+  version: 3.14.0
+  resolution: "@tiptap/extension-text-style@npm:3.14.0"
+  peerDependencies:
+    "@tiptap/core": ^3.14.0
+  checksum: 10c0/b5954e59c62fbc1666722e22dd360031922d687331d09608ef97d27d9a2cee1808a0eb3340a245fa1fee0b76b3df99798c7ac01e0f15f554baae283b24c3997c
   languageName: node
   linkType: hard
 

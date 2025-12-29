@@ -1,44 +1,61 @@
 // IMPORTACIONES DE TERCEROS
-import { useEditor, EditorContent } from "@tiptap/react"
-import StarterKit from "@tiptap/starter-kit"
-import { useEffect } from "react"
+import { EditorContent, useEditorState } from "@tiptap/react"
 
-// IMPORTACIONES PROPIAS
+// IMPORTACIONES PROPIAS 
+import './EditorDescripcion.scss'
 
 
-export const EditorDescripcion = ({ value, onChange }) => {
+export const EditorDescripcion = ({ editor }) => {
 
-    const editor = useEditor({
-        extensions: [StarterKit],
-        content: value,
-        onUpdate: ({ editor }) => {
-            onchange(editor.getHTML())
-        }
+    if(!editor) return null
+
+    const editorState = useEditorState({
+        editor, 
+        selector: ctx => {
+        return { 
+            isBold: ctx.editor.isActive('bold') ?? false,
+            canBold: ctx.editor.can().chain().toggleBold().run() ?? false,
+            isBulletList: ctx.editor.isActive('bulletList') ?? false,
+            isOrderedList: ctx.editor.isActive('orderedList') ?? false,
+            canUndo: ctx.editor.can().chain().undo().run() ?? false,
+            canRedo: ctx.editor.can().chain().redo().run() ?? false,
+            }
+        },
     });
-    // Limpia al desmontar el componente
-    useEffect(() => {
-        return () => editor?.destroy();
-    }, [editor]);
-
-    if (!editor) return null;
 
   return (
-    <>
-    <div className="editor-container">
-        {/*Toolbar*/}
-        <div className="toolbar">
-            <button type="button" onClick={() => editor.chain().focus().toggleBold().run()}
-            className={editor.isActive("bold") ? "active" : "" }>Negrita</button>
+    <div className="control-group">
+      <div>
+        <button 
+          onClick={() => editor.chain().focus().toggleBold().run()}
+          disabled={!editorState.canBold}
+          className={editorState.isBold ? 'is-active' : ''}
+        >
+          Negrita
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleBulletList().run()}
+          className={editorState.isOrderedList ? 'is-active' : ''}
+        >
+          Lista de puntos
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleOrderedList().run()}
+          className={editorState.isOrderedList ? 'is-active' : ''}
+        >
+          Lista ordenada
+        </button>
+        <button onClick={() => editor.chain().focus().undo().run()} disabled={!editorState.canUndo}>
+          Deshacer
+        </button>
+        <button onClick={() => editor.chain().focus().redo().run()} disabled={!editorState.canRedo}>
+          Rehacer
+        </button>
 
-            <button type="button" onClick={() => editor.chain().focus().toggleBold().run()}
-            className={editor.isActive("italic") ? "active" : "" }>Cursiva</button>
-
-            <button type="button" onClick={() => editor.chain().focus().toggleBold().run()}
-            className={editor.isActive("bulletList") ? "active" : "" }>Lista</button>
+        <div className="editor-input"> 
+            <EditorContent editor={editor} />
         </div>
-        {/*Edición*/}
-        <EditorContent editor={editor} className="editor" />
+      </div>
     </div>
-    </>
   )
 }

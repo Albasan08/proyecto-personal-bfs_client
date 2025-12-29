@@ -31,6 +31,8 @@ const RAW_RUNTIME_STATE =
           ["01_client-frontend", "workspace:."],\
           ["@eslint/js", "npm:9.39.2"],\
           ["@tiptap/core", "virtual:f9a0386f808112eb4e6475e5463174659eb4e2e1a008eada10925e550d7ad2f9c321df6f0c8d22a7bf6a38db73117ffdacfa93eb04cc73d9627fe7fdc5b5b23a#npm:3.14.0"],\
+          ["@tiptap/extension-italic", "virtual:f9a0386f808112eb4e6475e5463174659eb4e2e1a008eada10925e550d7ad2f9c321df6f0c8d22a7bf6a38db73117ffdacfa93eb04cc73d9627fe7fdc5b5b23a#npm:3.14.0"],\
+          ["@tiptap/extension-text-style", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:3.14.0"],\
           ["@tiptap/pm", "npm:3.14.0"],\
           ["@tiptap/react", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:3.14.0"],\
           ["@tiptap/starter-kit", "npm:3.14.0"],\
@@ -61,6 +63,8 @@ const RAW_RUNTIME_STATE =
           ["01_client-frontend", "workspace:."],\
           ["@eslint/js", "npm:9.39.2"],\
           ["@tiptap/core", "virtual:f9a0386f808112eb4e6475e5463174659eb4e2e1a008eada10925e550d7ad2f9c321df6f0c8d22a7bf6a38db73117ffdacfa93eb04cc73d9627fe7fdc5b5b23a#npm:3.14.0"],\
+          ["@tiptap/extension-italic", "virtual:f9a0386f808112eb4e6475e5463174659eb4e2e1a008eada10925e550d7ad2f9c321df6f0c8d22a7bf6a38db73117ffdacfa93eb04cc73d9627fe7fdc5b5b23a#npm:3.14.0"],\
+          ["@tiptap/extension-text-style", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:3.14.0"],\
           ["@tiptap/pm", "npm:3.14.0"],\
           ["@tiptap/react", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:3.14.0"],\
           ["@tiptap/starter-kit", "npm:3.14.0"],\
@@ -2943,6 +2947,28 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@tiptap/core", "virtual:f9a0386f808112eb4e6475e5463174659eb4e2e1a008eada10925e550d7ad2f9c321df6f0c8d22a7bf6a38db73117ffdacfa93eb04cc73d9627fe7fdc5b5b23a#npm:3.14.0"],\
           ["@tiptap/extension-text", "virtual:f9a0386f808112eb4e6475e5463174659eb4e2e1a008eada10925e550d7ad2f9c321df6f0c8d22a7bf6a38db73117ffdacfa93eb04cc73d9627fe7fdc5b5b23a#npm:3.14.0"],\
+          ["@types/tiptap__core", null]\
+        ],\
+        "packagePeers": [\
+          "@tiptap/core",\
+          "@types/tiptap__core"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@tiptap/extension-text-style", [\
+      ["npm:3.14.0", {\
+        "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/@tiptap-extension-text-style-npm-3.14.0-5ef402fde2-10c0.zip/node_modules/@tiptap/extension-text-style/",\
+        "packageDependencies": [\
+          ["@tiptap/extension-text-style", "npm:3.14.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:3.14.0", {\
+        "packageLocation": "./.yarn/__virtual__/@tiptap-extension-text-style-virtual-cb5b5a0318/6/AppData/Local/Yarn/Berry/cache/@tiptap-extension-text-style-npm-3.14.0-5ef402fde2-10c0.zip/node_modules/@tiptap/extension-text-style/",\
+        "packageDependencies": [\
+          ["@tiptap/core", "virtual:f9a0386f808112eb4e6475e5463174659eb4e2e1a008eada10925e550d7ad2f9c321df6f0c8d22a7bf6a38db73117ffdacfa93eb04cc73d9627fe7fdc5b5b23a#npm:3.14.0"],\
+          ["@tiptap/extension-text-style", "virtual:c961f65227ace3466b9145b1d602ae9e0119b4ebc7c839cdba6c4112fcfa8cb4cdbec710cea6b13ef476ddb20c9c38d036fae912b214e74b4e7100903f6daf84#npm:3.14.0"],\
           ["@types/tiptap__core", null]\
         ],\
         "packagePeers": [\

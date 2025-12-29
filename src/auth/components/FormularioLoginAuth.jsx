@@ -58,7 +58,7 @@ export const FormularioLoginAuth = () => {
         </div>
 
         <article>
-            <form className="formulario-auth flex-container" onSubmit={handleDatosFormularioLogin}>
+            <form className="formulario-auth flex-container" onSubmit={handleDatosFormularioLogin} action="/auth/login" method="post">
                 <label htmlFor="emailLogin">Correo electrónico:</label>
                 <input type="text" id="emailLogin" name="emailLogin" required placeholder="ejemplo@ejemplo.com"></input>
 

@@ -68,7 +68,7 @@ export const FormularioRegisterAuth = () => {
             setErrorConexion("Las contraseñas no coinciden"); 
 
             // Borrar el error después de varios segundos para que no permanezca en pantalla
-            setTimeout(() => { setErrorConexion(null); }, 3000); // 3 segundos
+            setTimeout(() => { setErrorConexion(null); }, 5000); // 3 segundos
         }
         
         // Conectar con hook
@@ -88,7 +88,7 @@ export const FormularioRegisterAuth = () => {
         </div>
 
         <article>
-            <form className="formulario-auth flex-container" onSubmit={handleDatosFormularioRegister}>
+            <form className="formulario-auth flex-container" onSubmit={handleDatosFormularioRegister} action="/auth/register" method="post">
                     <label htmlFor="emailRegister">Correo electrónico:</label>
                     <input type="text" id="emailRegister" name="emailRegister" required placeholder="ejemplo@ejemplo.com"></input>
     
