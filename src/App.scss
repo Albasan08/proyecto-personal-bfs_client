@@ -20,7 +20,7 @@
     --font-title: "Playfair Display", serif;
     --font-text: 'Poppins', sans-serif;
     
-    // Tipografías para móviles
+    // Tipografías tamaños
     --h1: 2.2rem; 
     --h2: 1.8rem;
     --h3: 1.5rem; 
@@ -133,6 +133,13 @@ p, input {
 article {
     margin-bottom: 2rem;
     padding: 1rem;
+    background-color: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+section {
+    background-color: #fff;
 }
 
 div {
@@ -181,7 +188,7 @@ ul {
 .btn-secundario {
     width: 100%; 
     padding: 1rem; 
-    background-color: transparent; 
+    background-color: #ffff; 
     color: var(--primary); 
 
     font-family: var(--font-text); 
@@ -278,6 +285,7 @@ ul {
     .btn-secundario {
         margin-top: 1rem;
         margin-bottom: 1rem;
+        background-color: #fff;
     }
 
     .flex-container {
@@ -365,6 +373,11 @@ ul {
     body { 
         padding: 2.5rem;
     }   
+
+    html, 
+    body {
+        height: 100%;
+    }
 
     h1, 
     h2, 

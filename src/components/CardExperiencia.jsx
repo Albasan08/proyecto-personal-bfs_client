@@ -1,0 +1,44 @@
+// IMPORTACIONES DE TERCEROS
+import Cookies from "js-cookie";
+
+// IMPORTACIONES PROPIAS
+const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
+import { BotoneraEditarExperiencia } from '../admin/components/BotoneraEditarExperiencia';
+import './CardExpe.scss'
+
+export const CardExperiencia = ({ experiencia }) => {
+    // Para pintar los botones en función del rol
+    const rol = Cookies.get("rol");
+
+  return (
+    <>
+    <article className="card-expe">
+        <div>
+            <img 
+                src={`${APIKEY_BACK}uploads/experiencias/${experiencia.imagen_expe}`}
+                alt={`experiencia de ${experiencia.nombre_expe}`}>
+            </img>
+        </div>
+
+        <div>
+            <h2>{experiencia.nombre_expe}</h2>
+            {/*Para convertir a etiquetas html otra vez */}
+            <p 
+                dangerouslySetInnerHTML={{ __html: experiencia.desc_corta_expe }}
+            />
+            <div className="precio-duracion">
+                <p>{experiencia.duracion_expe} min</p>
+                <p>{experiencia.precio_expe} €</p>
+            </div>
+        </div>
+
+        {/*Botonera admin */}
+        {rol === "admin" && (
+            <div>
+                <BotoneraEditarExperiencia id={experiencia.id_expe} />
+            </div>
+        )}
+    </article>
+    </>
+  )
+}

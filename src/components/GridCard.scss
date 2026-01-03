@@ -1,0 +1,16 @@
+.grid-experiencias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    padding: 2rem 1rem;
+}
+
+header h1 {
+    text-align: center;
+}
+// Para quitar el fondo blanco
+section {
+    background-color: transparent;
+    border-radius: none;
+    box-shadow: none;
+}
