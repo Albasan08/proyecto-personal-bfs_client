@@ -3,8 +3,8 @@ export * from "../auth/pages/LoginAuth"
 export *  from "../auth/pages/RegisterAuth"
 
 // PUBLIC
-export * from "../../public/pages/Experiencias"
-export * from "../../public/pages/DetalleExperiencia"
+export * from "../pages/Experiencias"
+export * from "../pages/DetalleExperiencia"
 
 // USER
 export * from "../user/pages/ExperienciaReserva"

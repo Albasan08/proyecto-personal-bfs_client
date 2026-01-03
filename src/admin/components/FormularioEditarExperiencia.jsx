@@ -8,11 +8,16 @@ import { useNavigate, useParams } from "react-router-dom";
 // IMPORTACIONES PROPIAS
 import { EditorDescripcion } from "./EditorDescripcion";
 import { useEditarExperienciaAdmin } from "../hooks/useEditarExperienciaAdmin";
+import { PopUpEliminarExperiencia } from "./PopUpEliminarExperiencia";
+import { useEliminarExperienciaAdmin } from "../hooks/useEliminarExperienciaAdmin";
 
 export const FormularioEditarExperiencia = ({ experiencia }) => {
 
     const [errores, setErrores] = useState([]);
     const [mensajeOk, setMensajeOk] = useState("");
+
+    const[mostrarPopup, setMostrarPopup] = useState(false);
+    const { eliminarExperiencia } = useEliminarExperienciaAdmin();
 
     const { editarExperienciaPorId } = useEditarExperienciaAdmin();
     const navigate = useNavigate();
@@ -103,6 +108,7 @@ export const FormularioEditarExperiencia = ({ experiencia }) => {
                     <input type="number" id="personas_max_expe" name="personas_max_expe" defaultValue={experiencia.personas_max_expe}></input>
 
                     <button type="submit" id="botonEditarExperiencia" className="btn-principal">Editar</button>
+                    <button type="button" id="botonEliminarExperiencia" className="btn-secundario" onClick={() => setMostrarPopup(true)}>Eliminar</button>
                     <button type="button" id="botonVolverExperiencia" className="btn-secundario" onClick={() => navigate(`/experiencias/${id}`)}>Volver</button>
                     {/*Gestión de errores*/}
                     {errores.length > 0  && (
@@ -117,6 +123,26 @@ export const FormularioEditarExperiencia = ({ experiencia }) => {
                     {mensajeOk && (
                         <p className="oks">{mensajeOk}</p>
                     )}
+
+                    {/*Pop up para confirmar la eliminación*/}
+                    {mostrarPopup && 
+                        <PopUpEliminarExperiencia 
+                            confirmarEliminar={async () => {
+
+                                const data = await eliminarExperiencia(id);
+
+                                if (data.ok) {
+                                    navigate("/experiencias");
+                                } else {
+                                    setErrores(data.error);
+                                }
+
+                                setMostrarPopup(false)
+
+                            }}
+                            cancelarEliminar={() => setMostrarPopup(false)}
+                        
+                        />}
                 </form>
             </article>
 

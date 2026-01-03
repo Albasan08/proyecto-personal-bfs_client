@@ -105,7 +105,8 @@ select:focus {
 body { 
     font-family: var(--font-text);
     margin: 0;
-    padding: 1.5rem;
+    padding: 0 1.5rem 0 1.5rem;
+    height: 100%;
 }
 
 h1, 
@@ -214,6 +215,45 @@ ul {
     box-shadow: 0 3px 8px rgba(0,0,0,0.05); // La sombra se hace más pequeña
 }
 
+// Popup
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 500;
+    padding: 1.5rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background-color: #ffff;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); } 
+    to { opacity: 1; transform: scale(1);}   
+}
+
+.popup h3 {
+    color: var(--tan);
+    margin-bottom: 1.5rem;
+}
+
+.popup button {
+    margin-bottom: 1rem;
+}
 
 @media (min-width: var(--breakpoint-tablet)) {
     :root {
@@ -278,6 +318,12 @@ ul {
     ul {
         padding-bottom: 1.25rem;
         padding-left: 2rem;
+    }
+
+    .popup {
+        padding: 2rem;
+        border-radius: 10px;
+        max-width: 420px;
     }
 
 }
@@ -348,6 +394,12 @@ ul {
         padding-bottom: 1.5rem;
         padding-left: 2.5rem;
     }
+
+    .popup {
+        padding: 2.5rem; 
+        max-width: 450px;
+    }
+
 }
 
 @media (min-width: var(--breakpoint-landscape)) { 
@@ -417,6 +469,10 @@ ul {
     ul {
         padding-bottom: 2rem;
         padding-left: 3rem;
+    }
+
+    .popup {
+        max-width: 180px;
     }
 
 }
