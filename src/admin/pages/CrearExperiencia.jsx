@@ -8,7 +8,9 @@ export const CrearExperiencia = () => {
   return (
     <>
     <NavBar />
-    <FormularioCrearExperiencia />
+    <main>
+      <FormularioCrearExperiencia />
+    </main>
     <Footer />
     </>
   )

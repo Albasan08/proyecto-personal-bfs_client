@@ -1,0 +1,25 @@
+.btn-toggle {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: none;
+    font-size: var(--text);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    min-width: 120px;
+}
+
+.btn-toggle:hover {
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+.btn-toggle.confirmado {
+    background-color: green;
+}
+
+.btn-toggle.pendiente {
+    background-color: red;
+}

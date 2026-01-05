@@ -1,0 +1,21 @@
+.card-info {
+    background: #ffff;
+    padding: 1.5rem;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-info:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.card-info p {
+    margin: 0; 
+    color: var(--text)
+}

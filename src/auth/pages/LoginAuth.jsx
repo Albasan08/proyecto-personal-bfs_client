@@ -6,7 +6,9 @@ import { FormularioLoginAuth } from "../components/FormularioLoginAuth"
 export const LoginAuth = () => {
   return (
     <>
-    <FormularioLoginAuth />
+    <main>
+      <FormularioLoginAuth />
+    </main>
     </>
   )
 }

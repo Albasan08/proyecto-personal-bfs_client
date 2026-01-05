@@ -8,7 +8,7 @@ export const redirigirPorRol = async () => {
     });
     
     const data = await respuesta.json();
-    console.log(data);
+    //console.log(data);
     return data.redirect;
 
 }

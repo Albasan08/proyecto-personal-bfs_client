@@ -8,11 +8,13 @@ export const AdminInfo = () => {
 
   return (
     <>
-    <NavBar />
-    <section className='pagina'>
-      <AdminInfoCard />
-    </section>
-    <Footer />
+      <NavBar />
+      <main>
+        <section>
+          <AdminInfoCard />
+        </section>
+      </main>
+      <Footer />
     </>
   )
 }

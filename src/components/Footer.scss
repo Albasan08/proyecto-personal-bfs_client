@@ -3,9 +3,7 @@
         to bottom, transparent, var(--brown)
     );
         
-    width: 100vw; /* para forzar que ocupe toda la pantalla - vw Representa el ancho visible de la pantalla*/
-    margin-left: calc(50% - 50vw); /* rompe los contenedores de app e index */ 
-    margin-right: calc(50% - 50vw);
+    width: 100%;
     padding: 1.2rem 1.5rem;
     margin-top: 2rem;
     font-size: 0.9rem; 
@@ -23,7 +21,6 @@
         padding: 1.5rem 2rem;
         font-size: 1rem;
     }
-
 }
 
 @media (min-width: var(--breakpoint-desktop)) {
@@ -31,13 +28,11 @@
         padding: 1.8rem 1rem;
         font-size: 1.05rem;
     }
-
 }
 
 @media (min-width: var(--breakpoint-landscape)) { 
     .footer {
-        max-width: 1200px;
-        margin: 3rem auto 0 auto;
+        padding: 1.8rem 1rem;
+        font-size: 1.05rem;
     }
-
 }

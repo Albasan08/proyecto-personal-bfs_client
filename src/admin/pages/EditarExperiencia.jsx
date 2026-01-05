@@ -15,8 +15,12 @@ export const EditarExperiencia = () => {
   return (
     <>
     <NavBar />
-    {experiencia && <FormularioEditarExperiencia experiencia={experiencia} />} {/* Para que el formulario no cargue antes y de null */}
+    <main>
+      {experiencia && <FormularioEditarExperiencia experiencia={experiencia} />} {/* Para que el formulario no cargue antes y de null */}
+    </main>
     <Footer />
     </>
   )
 }
+
+// Pendiente preguntar put después de eliminar

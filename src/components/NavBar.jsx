@@ -22,7 +22,7 @@ export const NavBar = () => {
   return (
     <>
       <header className="navbar-container">
-        <div className="logo">Neozahi</div>
+        <div className="logo">Neohazi</div>
 
         <button className="toggle" onClick={() => setAbrir(!abrir)}>
           <span className={`hamburger ${abrir ? "abrir" : ""}`}></span>

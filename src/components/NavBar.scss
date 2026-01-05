@@ -10,10 +10,6 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-
-  width: 100vw; 
-  margin-left: calc(50% - 50vw); 
-  margin-right: calc(50% - 50vw);
 }
 
 .logo {
@@ -70,7 +66,7 @@
   top: 70px;
   right: 0;
   width: 60%;
-  height: 100vw;
+  height: 100vh;
   background: 
   linear-gradient(to right, var(--brown), #ffff);
 

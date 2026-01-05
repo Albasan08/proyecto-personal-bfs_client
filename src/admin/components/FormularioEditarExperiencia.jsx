@@ -109,7 +109,7 @@ export const FormularioEditarExperiencia = ({ experiencia }) => {
 
                     <button type="submit" id="botonEditarExperiencia" className="btn-principal">Editar</button>
                     <button type="button" id="botonEliminarExperiencia" className="btn-secundario" onClick={() => setMostrarPopup(true)}>Eliminar</button>
-                    <button type="button" id="botonVolverExperiencia" className="btn-secundario" onClick={() => navigate(`/experiencias/${id}`)}>Volver</button>
+                    <button type="button" id="botonVolverExperiencia" className="btn-secundario" onClick={() => navigate(`/experiencias`)}>Volver</button>
                     {/*Gestión de errores*/}
                     {errores.length > 0  && (
                         <div>
@@ -132,16 +132,13 @@ export const FormularioEditarExperiencia = ({ experiencia }) => {
                                 const data = await eliminarExperiencia(id);
 
                                 if (data.ok) {
+                                    setMostrarPopup(false);
                                     navigate("/experiencias");
                                 } else {
                                     setErrores(data.error);
                                 }
-
-                                setMostrarPopup(false)
-
                             }}
                             cancelarEliminar={() => setMostrarPopup(false)}
-                        
                         />}
                 </form>
             </article>

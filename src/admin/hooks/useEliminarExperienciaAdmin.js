@@ -8,8 +8,8 @@ export const useEliminarExperienciaAdmin = () => {
 
   const [error, setError] = useState(null);
 
-  const eliminarExperiencia = async (id, formData) => {
-    //console.log("ELIMINAR EXPERIENCIA → ID:", id); 
+  const eliminarExperiencia = async (id) => {
+    //console.log("ELIMINAR EXPERIENCIA ID:", id); 
     try {
 
       const respuesta = await fetch(`${APIKEY_BACK}admin/eliminar/${id}`, {
@@ -34,7 +34,7 @@ export const useEliminarExperienciaAdmin = () => {
       const errorAMostrar = {
         ok: false,
         error: [
-          { mensaje: "Error al editar la experiencia" }
+          { mensaje: "Error al eliminar la experiencia" }
         ]
       };
 
