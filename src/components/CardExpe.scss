@@ -1,4 +1,5 @@
 .card-expe {
+    all: unset; // Resetear valores 
     border-radius: 14px;
     overflow: hidden; /* Recorta todo el contenido que se sale de los límites del contenedor */
     box-shadow: 0 4px 14px rgba(0,0,0,0.08);
@@ -16,10 +17,19 @@
     box-shadow: 0 8px 24px rgba(0,0,0,0.12); 
 }
 
+.card-expe p {
+    padding: 0 1rem;
+}
+
 .card-expe img {
     object-fit: cover; /*Redimensiona para mantener su proporcion original */
     width: 100%;
     height: 220px;
+    display: block;
+}
+
+.card-expe-img {
+    overflow: hidden; 
 }
 
 .precio-duracion {
@@ -29,6 +39,11 @@
     margin-top: 0.5rem;
     justify-content: space-around;
     font-weight: 600;
+}
+
+.btn-programar,
+.btn-editar {
+    padding: 1rem
 }
 
 @media (min-width: var(--breakpoint-tablet)) {
@@ -41,6 +56,10 @@
     .card-expe img {
         height: 200px;
     }
+
+    .card-expe h2 {
+    padding: 0 1rem;
+    }
 }
 
 @media (min-width: var(--breakpoint-desktop)) {
@@ -49,6 +68,10 @@
         max-width: 360px;
         margin: 0 auto;
     }
+
+    .card-expe h2 {
+    padding: 0 1rem;
+}
 }
 
 @media (min-width: var(--breakpoint-landscape)) { 
@@ -59,5 +82,9 @@
 
     .card-expe img {
         height: 240px;
+    }
+
+    .card-expe h2 {
+    padding: 0 1rem;
     }
 }

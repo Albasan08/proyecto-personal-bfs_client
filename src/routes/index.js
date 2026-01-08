@@ -17,5 +17,8 @@ export * from "../admin/pages/CrearExperiencia"
 export * from "../admin/pages/EditarExperiencia"
 export * from "../admin/pages/GestionReservas"
 export * from "../admin/pages/AdminInfo"
+
+// GESTOR PROGRAM
 export * from "../program/pages/ProgramarExperiencia"
 export * from "../program/pages/GestorInfo"
+export * from "../program/pages/BloquearProgramacion"

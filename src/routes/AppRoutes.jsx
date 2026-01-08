@@ -16,7 +16,8 @@ import {
   GestionReservas, 
   AdminInfo, 
   ProgramarExperiencia, 
-  GestorInfo 
+  GestorInfo,
+  BloquearProgramacion 
 } from "./index"
 import { PrivateRoute } from "../auth/components/PrivateRoute"
 import { RedireccionRol } from "../auth/components/RedireccionRol"
@@ -109,7 +110,7 @@ export const AppRoutes = () => {
       />
 
       {/* Gestor program */}
-      <Route path="gestor/programar"
+      <Route path="gestor/programar/:id"
         element={
           <PrivateRoute roles={["program"]}>
             <ProgramarExperiencia />
@@ -121,6 +122,14 @@ export const AppRoutes = () => {
         element={
           <PrivateRoute roles={["program"]}>
             <GestorInfo />
+          </PrivateRoute>
+        }
+      />
+
+      <Route path="gestor/programar/bloquear"
+        element={
+          <PrivateRoute roles={["program"]}>
+            <BloquearProgramacion />
           </PrivateRoute>
         }
       />

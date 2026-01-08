@@ -6,7 +6,8 @@ import './BotoneraEditarExperiencia.scss'
 
 export const BotoneraEditarExperiencia = ({ id }) => {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  
   return (
     <>
     <button className="btn-principal" onClick={() => navigate(`/admin/editar/${id}`)}>Editar</button>

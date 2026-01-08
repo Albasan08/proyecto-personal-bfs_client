@@ -42,6 +42,7 @@ export const useEliminarExperienciaAdmin = () => {
       return errorAMostrar;
     }
   };
+  
   return (
     {
       eliminarExperiencia,

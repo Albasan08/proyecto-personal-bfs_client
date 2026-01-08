@@ -4,7 +4,7 @@ import './AdminInfoCard.scss'
 
 export const AdminInfoCard = () => {
 
-    const { data } = useObtenerInfoAdmin()
+    const { data } = useObtenerInfoAdmin();
 
     return (
         <>
@@ -26,6 +26,5 @@ export const AdminInfoCard = () => {
                 </>
             )}
         </>
-
     )
 }

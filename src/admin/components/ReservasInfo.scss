@@ -3,6 +3,8 @@
     grid-template-columns: 1fr;
     gap: 1.75rem;
     padding: 2rem 0;
+    background-color: transparent;
+    box-shadow: transparent;
 }
 
 @media (min-width: var(--breakpoint-tablet)) { 

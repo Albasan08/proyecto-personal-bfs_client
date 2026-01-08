@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 import { BotoneraEditarExperiencia } from '../admin/components/BotoneraEditarExperiencia';
 import './CardExpe.scss'
+import { BotoneraProgramarExperiencia } from "../program/components/BotoneraProgramarExperiencia";
 
 export const CardExperiencia = ({ experiencia }) => {
     // Para pintar los botones en función del rol
@@ -34,8 +35,15 @@ export const CardExperiencia = ({ experiencia }) => {
 
         {/*Botonera admin */}
         {rol === "admin" && (
-            <div>
+            <div className="btn-editar">
                 <BotoneraEditarExperiencia id={experiencia.id_expe} />
+            </div>
+        )}
+
+        {/*Botonera program */}
+        {rol === "program" && (
+            <div className="btn-programar">
+                <BotoneraProgramarExperiencia id={experiencia.id_expe} />
             </div>
         )}
     </article>

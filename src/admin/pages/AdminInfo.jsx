@@ -10,7 +10,7 @@ export const AdminInfo = () => {
     <>
       <NavBar />
       <main>
-        <section>
+        <section className="adminInfoCard">
           <AdminInfoCard />
         </section>
       </main>

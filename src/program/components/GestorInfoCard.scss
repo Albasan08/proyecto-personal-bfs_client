@@ -1,17 +1,14 @@
-.adminInfoCard {
-  background-color: transparent;
-  box-shadow: transparent;
-}
-
-.admin-card {
+.gestor-card {
   background-color: #ffffff;
   border-radius: 18px;
   box-shadow: 0 8px 35px rgba(0, 0, 0, 0.08);
   text-align: center;
   animation: fadeIn 0.4s ease;
+  padding: 2rem 1.5rem; 
+  margin: 0 1.5rem;
 }
 
-.admin-card-info {
+.gestor-card-info {
   text-align: center;
   display: flex;
   flex-direction: column;

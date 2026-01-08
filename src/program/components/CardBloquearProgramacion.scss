@@ -1,0 +1,35 @@
+section {
+    background-color: #fff;
+}
+
+.cardProgram article {
+    padding: 0;
+}
+
+.cardProgram input {
+    width: 100%;
+    padding: 1.2rem 1rem;
+
+    background: #ffffff;
+    border-radius: 0.75rem;
+    border: 1.5px solid var(--tan);
+
+    color: #333; 
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardProgram input::placeholder { 
+    color: var(--tan); 
+}
+
+.cardProgram label {
+
+    padding-bottom: 0.75rem;
+
+}
+
+.cardProgram input:focus { 
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(162, 37, 34, 0.15);
+}

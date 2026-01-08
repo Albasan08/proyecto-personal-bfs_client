@@ -57,6 +57,7 @@ export const NavBar = () => {
           {token && rol === "program" && (
             <>
               <NavLink to="/gestor/info" onClick={() => setAbrir(false)}>Información</NavLink>
+              <NavLink to="/gestor/programar/bloquear" onClick={() => setAbrir(false)}>Bloquear</NavLink>
             </>
           )}
           

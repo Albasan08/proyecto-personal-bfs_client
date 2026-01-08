@@ -4,7 +4,8 @@ import './BotonReserva.scss'
 
 export const BotonReserva = ({ idReserva, estadoInicial }) => {
 
-    const { estado, error, estadoToggleBoton } = useGestionarReservasAdmin({ idReserva, estadoInicial });
+  const { estado, error, estadoToggleBoton } = useGestionarReservasAdmin({ idReserva, estadoInicial });
+  // Hacer useEffect 
 
   return (
     <>
