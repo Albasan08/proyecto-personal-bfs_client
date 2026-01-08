@@ -1,42 +1,3 @@
-section {
-    background-color: #ffff;
-
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-
-    display: flex;
-    flex-direction: column;
-
-    text-align: center;
-
-    padding: 2rem 1.5rem;
-    margin: 0 1.5rem;
-}
-
-section article {
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 2.5rem;
-}
-
-h1 {
-    color: var(--primary);
-}
-
-h2 {
-    color: var(--tan);
-}
-
-p, 
-label {
-    color: var(--text);
-}
-
-label {
-    text-align: left;
-    display: block;
-}
-
 .formulario-auth {
     width: 100%;
     display: flex;
@@ -65,20 +26,6 @@ label {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(162, 37, 34, 0.15);
 }
-
-a {
-    color: var(--secondary);
-    font-weight: 600;
-}
-
-a:hover {
-    color: var(--brown);
-}
-
-.oks {
-    color: green;
-}
-
 
 @media (min-width: var(--breakpoint-tablet)) {
     section {

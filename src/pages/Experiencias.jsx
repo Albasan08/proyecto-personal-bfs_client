@@ -1,14 +1,21 @@
 // IMPORTACIONES DE TERCEROS
 
 // IMPORTACIONES PROPIAS
+import { useEffect } from "react"
 import { Footer } from "../components/Footer"
 import { GridCard } from "../components/GridCard"
 import { NavBar } from "../components/NavBar"
-import { useObtenerTodasExperiencias } from "../hooks/useObtenerTodasExperiencias"
+import { useFetch } from "../hooks/useFetch"
+const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
 export const Experiencias = () => {
 
-  const { experiencias, error } = useObtenerTodasExperiencias();
+  const { fetchData, data, error, loading} = useFetch();
+
+  const url = "experiencias"
+  useEffect(() => {
+    fetchData(`${APIKEY_BACK}${url}`, "GET");
+  }, []);
 
   return (
     <>
@@ -18,13 +25,20 @@ export const Experiencias = () => {
           <h1>Encuentra tu experiencia soñada</h1>
         </header>
 
-        {!error && experiencias.length > 0 && (
-          <GridCard experiencias={experiencias} />
+        {loading && (
+          <div className="loading">
+            <p>Cargando...</p>
+          </div>
         )}
 
-        {/*Gestión de errores*/}
-        {error && (
-          <p className="errores">{error}</p>
+        {data && (
+          <GridCard experiencias={data.data} />
+        )}
+
+       {error && (
+          <div>
+            <p className="errores">{data.mensaje}</p>
+          </div>
         )}
       </main>
       <Footer />

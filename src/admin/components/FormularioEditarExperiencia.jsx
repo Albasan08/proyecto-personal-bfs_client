@@ -7,25 +7,22 @@ import { useNavigate, useParams } from "react-router-dom";
 
 // IMPORTACIONES PROPIAS
 import { EditorDescripcion } from "./EditorDescripcion";
-import { useEditarExperienciaAdmin } from "../hooks/useEditarExperienciaAdmin";
 import { PopUpEliminarExperiencia } from "./PopUpEliminarExperiencia";
-import { useEliminarExperienciaAdmin } from "../hooks/useEliminarExperienciaAdmin";
+import { useFetch } from "../../hooks/useFetch";
+const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
 export const FormularioEditarExperiencia = ({ experiencia }) => {
 
-    const [errores, setErrores] = useState([]);
-    const [mensajeOk, setMensajeOk] = useState("");
+    const { fetchData, data, error, loading, setData } = useFetch();
 
-    const[mostrarPopup, setMostrarPopup] = useState(false);
-    const { eliminarExperiencia } = useEliminarExperienciaAdmin();
+    const [mostrarPopup, setMostrarPopup] = useState(false);
 
-    const { editarExperienciaPorId } = useEditarExperienciaAdmin();
     const navigate = useNavigate();
     const { id } = useParams();
     //console.log(experiencia, "DESDE COMPONENTE FORMULARIO")
     const editorCorto = useEditor({
         extensions: [StarterKit, TextStyle],
-        content: experiencia?.desc_corta_expe || "" // Sino no carga el editor
+        content: experiencia?.desc_corta_expe || "" // Si no no carga el editor
     });
 
     const editorLargo = useEditor({
@@ -34,16 +31,23 @@ export const FormularioEditarExperiencia = ({ experiencia }) => {
     });
     // Actualizar los editores de TipTap
     useEffect(() => {
-        if(experiencia && editorCorto) {
+        if (experiencia && editorCorto) {
             editorCorto.commands.setContent(experiencia.desc_corta_expe);
         }
     }, [experiencia, editorCorto]);
 
     useEffect(() => {
-        if(experiencia && editorLargo) {
+        if (experiencia && editorLargo) {
             editorLargo.commands.setContent(experiencia.desc_larga_expe);
         }
     }, [experiencia, editorLargo]);
+    // Para navegar directamente a experiencias cuando se elimine
+    useEffect(() => { 
+        if (data?.ok === true && data?.mensaje === "Experiencia eliminada correctamente") { 
+            
+            navigate("/experiencias"); } 
+        
+        }, [data, navigate]);
 
     const handleFormularioInputs = async (event) => {
 
@@ -56,93 +60,93 @@ export const FormularioEditarExperiencia = ({ experiencia }) => {
         // La imagen
         const nuevaImagen = event.target.imagen_expe.files[0];
         // Si no hay imagen nueva - No enviar
-        if(!nuevaImagen) {
+        if (!nuevaImagen) {
             formData.delete("imagen_expe");
         };
 
-        const data = await editarExperienciaPorId(id, formData);
-        // Si data tiene errores - Setear estado
-        if (!data.ok) {
-            setErrores(data.error);
-            return;
-        };
-        // Si todo va bien - Mantener
-        setErrores([])
-        setMensajeOk(data.mensaje);
-        // Borrar mensaje de ok
-        setTimeout(() => { 
-            setMensajeOk(""); }, 
-            3000); // 3 segundos
-
+        const url = `admin/editar/${id}`
+        // Conexión con el back
+        fetchData(`${APIKEY_BACK}${url}`, "PUT", formData);
+        // Borrar mensajes
+        setTimeout(() => {
+            setData(prev => prev ? { ...prev, mensaje: "" } : null);
+        }, 4000);
     }
 
     return (
-        <section>
-            <div>
-                <h1>Editar experiencia</h1>
-                <h2>Cambia la experiencia para tus clientes</h2>
-            </div>
+        <>
+            <section>
+                <header>
+                    <h1>Editar experiencia</h1>
+                    <h2>Cambia la experiencia para tus clientes</h2>
+                </header>
 
-            <article>
-                <form className="formulario-auth flex-container" encType="multipart/form-data" onSubmit={handleFormularioInputs}>
-                    <label>Nombre:</label>
-                    <input type="text" id="nombre_expe" name="nombre_expe" defaultValue={experiencia.nombre_expe}></input>
+                <article>
+                    <form className="formulario-auth flex-container" encType="multipart/form-data" onSubmit={handleFormularioInputs}>
+                        <label>Nombre:</label>
+                        <input type="text" id="nombre_expe" name="nombre_expe" defaultValue={experiencia.nombre_expe}></input>
 
-                    <label>Descripción corta:</label>
-                    <EditorDescripcion editor={editorCorto} />
+                        <label>Descripción corta:</label>
+                        <EditorDescripcion editor={editorCorto} />
 
-                    <label>Descripción larga:</label>
-                    <EditorDescripcion editor={editorLargo} />
+                        <label>Descripción larga:</label>
+                        <EditorDescripcion editor={editorLargo} />
 
-                    <label>Imagen:</label>
-                    <p>{experiencia.imagen_expe}</p>
-                    <input type="file" accept="image/*" id="imagen_expe" name="imagen_expe" placeholder="Sube aquí tu imagen"></input>
+                        <label>Imagen:</label>
+                        <p>{experiencia.imagen_expe}</p>
+                        <input type="file" accept="image/*" id="imagen_expe" name="imagen_expe" placeholder="Sube aquí tu imagen"></input>
 
-                    <label>Duración:</label>
-                    <input type="number" id="duracion_expe" name="duracion_expe" defaultValue={experiencia.duracion_expe}></input>
+                        <label>Duración:</label>
+                        <input type="number" id="duracion_expe" name="duracion_expe" defaultValue={experiencia.duracion_expe}></input>
 
-                    <label>Precio:</label>
-                    <input type="number" id="precio_expe" name="precio_expe" defaultValue={experiencia.precio_expe}></input>
+                        <label>Precio:</label>
+                        <input type="number" id="precio_expe" name="precio_expe" defaultValue={experiencia.precio_expe}></input>
 
-                    <label>Máximo de personas:</label>
-                    <input type="number" id="personas_max_expe" name="personas_max_expe" defaultValue={experiencia.personas_max_expe}></input>
+                        <label>Máximo de personas:</label>
+                        <input type="number" id="personas_max_expe" name="personas_max_expe" defaultValue={experiencia.personas_max_expe}></input>
 
-                    <button type="submit" id="botonEditarExperiencia" className="btn-principal">Editar</button>
-                    <button type="button" id="botonEliminarExperiencia" className="btn-secundario" onClick={() => setMostrarPopup(true)}>Eliminar</button>
-                    <button type="button" id="botonVolverExperiencia" className="btn-secundario" onClick={() => navigate(`/experiencias`)}>Volver</button>
-                    {/*Gestión de errores*/}
-                    {errores.length > 0  && (
-                        <div>
-                            {errores.map((error, index) => (
-                                <p key={index} className="errores">{error.mensaje}</p>
-                            ))}
-                        </div>
-                    )}
+                        <button type="submit" id="botonEditarExperiencia" className="btn-principal">Editar</button>
+                        <button type="button" id="botonEliminarExperiencia" className="btn-secundario" onClick={() => setMostrarPopup(true)}>Eliminar</button>
+                        <button type="button" id="botonVolverExperiencia" className="btn-secundario" onClick={() => navigate(`/experiencias`)}>Volver</button>
+                        
+                        {/*Pop up para confirmar la eliminación*/}
+                        {mostrarPopup &&
+                            <PopUpEliminarExperiencia
+                                confirmarEliminar={async () => {
 
-                    {/*Gestión de ok*/}
-                    {mensajeOk && (
-                        <p className="oks">{mensajeOk}</p>
-                    )}
+                                    const url = `admin/eliminar/${id}`
+                                    // Conexión con el back
+                                    await fetchData(`${APIKEY_BACK}${url}`, "DELETE");
 
-                    {/*Pop up para confirmar la eliminación*/}
-                    {mostrarPopup && 
-                        <PopUpEliminarExperiencia 
-                            confirmarEliminar={async () => {
+                                }}
 
-                                const data = await eliminarExperiencia(id);
+                                cancelarEliminar={() => setMostrarPopup(false)}
 
-                                if (data.ok) {
-                                    setMostrarPopup(false);
-                                    navigate("/experiencias");
-                                } else {
-                                    setErrores(data.error);
-                                }
-                            }}
-                            cancelarEliminar={() => setMostrarPopup(false)}
-                        />}
-                </form>
-            </article>
+                            />}
 
-        </section>
+                        {/*Gestión de los errores */}
+                        {data && (
+                            <div>
+                                <p className="oks">{data.mensaje}</p>
+                            </div>
+                        )}
+
+                        {/*Gestión de la confirmación*/}
+                        {error && (
+                            <div>
+                                <p className="errores">{error}</p>
+                            </div>
+                        )}
+
+                        {/*Loading*/}
+                        {loading && (
+                            <div>
+                                <p className="loading"> Cargando...</p>
+                            </div>
+                        )}
+                    </form>
+                </article>
+            </section>
+        </>
     )
 }

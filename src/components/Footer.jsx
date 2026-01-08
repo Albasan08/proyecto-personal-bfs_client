@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <>
     <footer className="footer">
-        <p>Neohazi experiencias</p>
+        <p>Zahari experiencias</p>
     </footer>
     </>
   )

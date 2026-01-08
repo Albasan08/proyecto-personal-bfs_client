@@ -116,6 +116,12 @@ body {
     background-size: cover; // Cubre todo el espacio
 }
 
+.loading {
+    color: var(--primary); 
+    font-weight: 600;
+    text-align: center;
+    justify-content: center;
+}
 
 html {
     min-height: 100%;
@@ -138,20 +144,67 @@ h6 {
     margin-bottom: 1rem;
 }
 
+h1 {
+    color: var(--primary);
+}
+
+header h1 {
+    text-align: center;
+}
+
+h2 {
+    color: var(--tan);
+}
+
+p, 
+label {
+    color: var(--text);
+}
+
+label {
+    text-align: left;
+    display: block;
+}
+
 p,
 input {
     font-family: var(--font-text);
     margin-bottom: 1rem;
 }
 
-.errores p {
+
+a {
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+a:hover {
+    color: var(--brown);
+}
+
+.errores {
     color: red;
     font-family: var(--font-text);
 }
 
+.oks {
+    color: green;
+    font-family: var(--font-text);
+}
+
+section {
+    background-color: #ffff;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 0 1.5rem;
+}
+
 article {
-    margin-bottom: 2rem;
-    padding: 1rem;
+    padding: 0 1rem;
     background-color: #fff;
     border-radius: 14px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
@@ -162,6 +215,16 @@ ul {
     padding-bottom: 1rem;
     padding-left: 1.5rem;
 }
+
+html, body { 
+    height: 100%; 
+} 
+
+#root { 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+} 
 
 // BOTONES
 .btn-principal {
@@ -182,6 +245,7 @@ ul {
         background-color 0.2s ease,
         transform 0.2s ease;
     box-shadow: 0.2s ease;
+    margin-bottom: 1rem;
 }
 
 // Animación cuando se pasa por encima

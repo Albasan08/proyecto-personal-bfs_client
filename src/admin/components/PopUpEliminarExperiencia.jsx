@@ -1,6 +1,3 @@
-// IMPORTACIONES PROPIAS
-import './PopUpEliminarExperiencia.scss'
-
 export const PopUpEliminarExperiencia = ({ confirmarEliminar, cancelarEliminar }) => {
   return (
     <>

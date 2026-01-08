@@ -1,9 +1,6 @@
 // IMPORTACIONES DE TERCEROS
 import { useNavigate } from "react-router-dom";
 
-// IMPORTACIONES PROPIAS
-import './BotoneraEditarExperiencia.scss'
-
 export const BotoneraEditarExperiencia = ({ id }) => {
 
   const navigate = useNavigate();

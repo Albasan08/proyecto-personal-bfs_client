@@ -4,7 +4,6 @@ import { EditorContent, useEditorState } from "@tiptap/react"
 // IMPORTACIONES PROPIAS 
 import './EditorDescripcion.scss'
 
-
 export const EditorDescripcion = ({ editor }) => {
 
     if(!editor) return null
