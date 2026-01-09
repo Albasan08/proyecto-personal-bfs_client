@@ -1,29 +1,20 @@
 // IMPORTACIONES DE TERCEROS
-import './InfoBasicaExperiencia.scss'
+import { useEffect } from 'react';
 
 // IMPORTACIONES PROPIAS
-import { useObtenerInfoExperiencia } from "../hooks/useObtenerInfoExperiencia"
+import './InfoBasicaExperiencia.scss'
 
-export const InfoBasicaExperiencia = ({ id }) => {
 
-    const { experiencia, error } = useObtenerInfoExperiencia(id);
-
+export const InfoBasicaExperiencia = ({ experiencia }) => {
     return (
         <>
-            <article>
-                {experiencia && (
-                    <>
-                        <h2>{experiencia.nombre_expe}</h2>
-                        <div dangerouslySetInnerHTML={{ __html: experiencia.desc_corta_expe }} /> {/* Para convertir las etiquetas de html*/}
-                        <p>{experiencia.duracion_expe} mins</p>
-                    </>
-                )}
-
-                {/*Gestión de errores*/}
-                {error && (
-                    <p className="errores">{error}</p>
-                )}
-            </article>
+            {experiencia && (
+                <article>
+                    <h2>{experiencia.nombre_expe}</h2>
+                    <div dangerouslySetInnerHTML={{ __html: experiencia.desc_corta_expe }} /> {/* Para convertir las etiquetas de html*/}
+                    <p>{experiencia.duracion_expe} mins</p>
+                </article>
+            )}
         </>
     )
 }

@@ -1,7 +1,7 @@
 // IMPORTACIONES PROPIAS
 import './SelectorExperiencias.scss'
 
-export const SelectorExperiencias2h = () => {
+export const SelectorExperiencias2h = ({ horariosBloqueados, setHorariosBloqueados }) => {
   return (
     <>
     <article className="botoneraHorarios">

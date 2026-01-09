@@ -5,6 +5,7 @@ import { CardProgramarExperiencia } from '../components/CardProgramarExperiencia
 import '../components/CardBloquearProgramacion.scss'
 
 export const ProgramarExperiencia = () => {
+  
   return (
     <>
     <NavBar />

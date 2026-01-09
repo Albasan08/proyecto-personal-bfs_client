@@ -172,6 +172,12 @@ input {
     margin-bottom: 1rem;
 }
 
+main {
+    flex: 1;
+    justify-content: center; 
+    align-items: center; 
+    padding: 2rem 0;
+}
 
 a {
     color: var(--secondary);
