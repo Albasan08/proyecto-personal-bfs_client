@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { CalendarioFechas } from '../components/CalendarioFechas'
 import './CardBloquearProgramacion.scss'
 
+
 export const CardBloquearProgramacion = () => {
 
   const [fechasBloqueadas, setFechasBloqueadas] = useState([]);
@@ -29,21 +30,21 @@ export const CardBloquearProgramacion = () => {
 
   return (
     <>
+    <h1>Página en mantenimiento</h1>
+    {/* }
       <section className="cardBloquear">
         <header>
           <h1>Gestiona la programación bloqueada</h1>
         </header>
 
         <form encType="multipart/form-data" onSubmit={handleSubmit}>
-          <CalendarioFechas fechasBloqueadas={fechasBloqueadas} setFechasBloqueadas={setFechasBloqueadas} />
-
-          <label>Razón del bloqueo de la seleccion:</label>
-          <input type="text" id="razon_bloqueo" name="razon_bloqueo" required placeholder="Descripción corta"></input>
+        {/* Pendiente select con el título de las experiencias y calendario bloquear
+          
 
           <button type="submit" className="btn-principal">Bloquear</button>
           <button type="button" className="btn-secundario" onClick={() => navigate(`/experiencias`)}>Volver</button>
         </form>
-      </section>
+      </section> */} 
     </>
   )
 }

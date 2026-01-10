@@ -1,34 +1,57 @@
 // IMPORTACIONES DE TERCEROS
 import { useParams } from "react-router-dom"
-import { useEffect } from "react"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 // IMPORTACIONES PROPIAS
-import { CalendarioFechas } from "./CalendarioFechas"
-import { InfoBasicaExperiencia } from "./InfoBasicaExperiencia"
-import { SelectorExperiencias1h } from "./SelectorExperiencias1h"
-import { SelectorExperiencias2h } from "./SelectorExperiencias2h"
-import { SelectorExperiencias15h } from "./SelectorExperiencias15h"
-import { BotonProgramarExperiencia } from "./BotonProgramarExperiencia"
 import { useFetch } from "../../hooks/useFetch"
+import { CalendarioFechas } from "./CalendarioFechas"
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
 export const CardProgramarExperiencia = () => {
+
+  const [fechas, setFechas] = useState([]);
+  const [rangos, setRangos] = useState([]);
 
   const { fetchData, data, error, loading } = useFetch();
 
   const { id } = useParams();
 
-  const url = `gestor/programar/${id}`
-  useEffect(() => {
-    fetchData(`${APIKEY_BACK}${url}`, "GET");
-  }, []);
-  console.log(data);
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+
+    event.preventDefault();
+    //Normalizar para enviar a Back
+    const fechasNormalizadas = fechas.map(fecha => fecha.toISOString().split("T")[0]);
+    const rangosNormalizados = rangos.map(rango => ({
+      inicio: rango.inicio.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      fin: rango.fin.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+    }));
+
+    const body = {
+      fechas: fechasNormalizadas,
+      rangos: rangosNormalizados
+    }
+    const url = `gestor/programar/${id}`
+    fetchData(`${APIKEY_BACK}${url}`, "PUT", body);
+
+  };
 
   return (
     <>
       <header>
         <h1>Programa la experiencia</h1>
       </header>
+
+      <article>
+        <form encType="multipart/form-data" onSubmit={handleSubmit}>
+          <CalendarioFechas onChangeFechas={setFechas} onChangeRangos={setRangos} />
+
+          <button type="submit" className="btn-principal">Programar</button>
+          <button type="button" className="btn-secundario" onClick={() => navigate(`/experiencias`)}>Volver</button>
+        </form>
+      </article>
 
       {error && (
         <p className="errores">{error}</p>
@@ -40,24 +63,11 @@ export const CardProgramarExperiencia = () => {
         </div>
       )}
 
-      {data && data.data && (
-      <InfoBasicaExperiencia experiencia={data.data} />
+      {data && (
+        <div>
+          <p className="oks">{data.mensaje}</p>
+        </div>
       )}
-
-      <CalendarioFechas />
-
-      {/*Horarios en función de la duración, se pone ? porque sino da null (tarda en hacer traer la info de la duración*/}
-      {data?.data?.duracion_expe == 60 && (
-        <SelectorExperiencias1h />
-      )}
-      {data?.data?.duracion_expe == 90 && (
-        <SelectorExperiencias15h />
-      )}
-      {data?.data?.duracion_expe == 120 && (
-        <SelectorExperiencias2h />
-      )}
-
-      < BotonProgramarExperiencia />
     </>
   )
 }

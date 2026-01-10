@@ -9,7 +9,6 @@ article {
     align-items: center;
 
     --rdp-accent-color: var(--primary) !important; 
-    --rdp-background-color: var(--primary) !important;
 }
 // Cabecera mes
 .calendario-programacion .rdp-caption { 
@@ -37,10 +36,8 @@ article {
     cursor: pointer; 
     color: #fff !important;
 }
-
 // Días elegidos
-.calendario-programacion 
-.rdp-day_selected { 
+.calendario-programacion .rdp .rdp-day--selected { 
     background: var(--primary) !important; 
     color: #fff !important; 
     font-weight: 600; 
@@ -52,11 +49,10 @@ article {
     cursor: not-allowed; 
 }
 
-.calendario-programacion .rdp-button[aria-selected="true"] { 
-    background-color: var(--primary) !important; 
-    color: #fff !important; 
-    border-radius: 8px !important; 
-    border: 2px solid var(--primary) !important; 
+.calendario-container .btn-principal, 
+.calendario-container .btn-secundario { width: 100%; margin-top: 1rem; align-self: stretch; /* fuerza a ocupar el ancho */ }
+.calendario-container h3 {
+    color: var(--brown)
 }
 
 @media (min-width: var(--breakpoint-tablet)) {
