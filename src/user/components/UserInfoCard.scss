@@ -1,0 +1,45 @@
+section.user-info {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.user-card,
+.user-reservas { 
+    background: #ffffff; 
+    border-radius: 14px; 
+    padding: 1.8rem; 
+    margin-bottom: 2rem; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.user-card, h3
+.user-reservas h3 {
+    color: var(--secondary);
+}
+
+.lista-reservas { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    
+    .reserva-item { 
+        background: color-mix(in srgb, var(--tan) 30%, transparent);; 
+        border-radius: 10px; 
+        padding: 1.2rem 1.5rem; 
+        margin-bottom: 1rem; 
+        border: 1px solid rgba(0,0,0,0.05); 
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05); 
+        transition: transform 0.15s ease, 
+        box-shadow 0.15s ease; 
+        &:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
+        } 
+        
+        p { 
+            margin: 0.3rem 0; 
+            font-size: 0.95rem;
+        } 
+    } 
+}

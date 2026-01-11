@@ -1,0 +1,161 @@
+.reserva-experiencia {
+  margin-top: 2rem;
+}
+
+.calendario-para-reservar,
+.horarios-para-reservar {
+  width: 100%;
+}
+
+.grid-horarios {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.btn-horario {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.btn-horario:hover {
+  background: var(--tan);
+}
+
+.btn-horario.activo { 
+    background: var(--tan); 
+    color: white; 
+    border-color: var(--tan); 
+}
+
+article { 
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.calendario-programacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    --rdp-accent-color: var(--primary) !important; 
+}
+// Cabecera mes
+.calendario-programacion .rdp-caption { 
+    font-size: 1.25rem; 
+    font-weight: 600; 
+    color: var(--text); 
+    margin-bottom: 0.5rem; 
+}
+// Días semana
+.calendario-programacion .rdp-head_cell { 
+    font-size: 0.85rem; 
+    font-weight: 600; 
+    color: var(--primary); 
+    padding-bottom: 0.4rem; 
+}
+//Días
+.calendario-programacion .rdp-day { 
+    font-size: 0.95rem; 
+    border-radius: 8px; 
+    transition: all 0.2s ease; 
+}
+
+.calendario-programacion .rdp-day:hover { 
+    background: var(--primary) !important;
+    cursor: pointer; 
+    color: #fff !important;
+}
+// Días elegidos
+.calendario-programacion .rdp .rdp-day--selected { 
+    background: var(--primary) !important; 
+    color: #fff !important; 
+    font-weight: 600; 
+    border-radius: 8px;
+}
+// Días deshabilitados 
+.calendario-programacion .rdp-day_disabled { 
+    opacity: 0.4; 
+    cursor: not-allowed; 
+}
+
+.calendario-container .btn-principal, 
+.calendario-container .btn-secundario { width: 100%; margin-top: 1rem; align-self: stretch; /* fuerza a ocupar el ancho */ }
+.calendario-container h3 {
+    color: var(--brown)
+}
+
+.selector-personas {
+  margin-bottom: 2rem;
+}
+
+.formulario-reserva {
+  margin-top: 2rem;
+}
+@media (min-width: var(--breakpoint-tablet)) {
+  .reserva-experiencia {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .calendario-para-reservar,
+  .horarios-para-reservar {
+    width: 48%;
+  }
+
+    .calendario-programacion {
+        --rdp-cell-size: 36px;
+        padding: 1rem;
+    }
+
+    .calendario-programacion .rdp-caption { 
+        font-size: 1.1rem; 
+    }
+}
+
+@media (min-width: var(--breakpoint-desktop)) {
+  .reserva-experiencia {
+    gap: 3rem;
+  }
+
+  .btn-horario {
+    font-size: 1rem;
+    padding: 14px 16px;
+  }
+
+    .calendario-programacion { 
+        --rdp-cell-size: 34px; 
+        padding: 0.9rem;
+    }
+
+    .calendario-programacion .rdp-day { 
+        font-size: 0.85rem; 
+    }
+}
+
+
+@media (min-width: var(--breakpoint-landscape)) {
+  .reserva-experiencia {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .grid-horarios {
+    gap: 16px;
+  }
+
+    .calendario-programacion { 
+        --rdp-cell-size: 32px; 
+        padding: 0.8rem; 
+    } 
+
+    .calendario-programacion .rdp-caption { 
+        font-size: 1rem; 
+    }
+}
