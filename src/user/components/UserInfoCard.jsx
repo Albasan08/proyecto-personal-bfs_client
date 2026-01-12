@@ -73,7 +73,7 @@ export const UserInfoCard = () => {
                         <article className="user-reservas"> 
                             <h2>Mis reservas</h2> 
                                 {data.data.reservas.length === 0 && ( 
-                                    <p>No tienes reservas registradas.</p> 
+                                    <p>No tienes reservas registradas</p> 
                                 )} 
                             
                             {data.data.reservas.length > 0 && ( 

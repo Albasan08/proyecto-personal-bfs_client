@@ -79,9 +79,10 @@ export const CalendarioFechas = ({ onChangeFechas, onChangeRangos }) => {
                         onChange={setHoraInicio}
                         showTimeSelect
                         showTimeSelectOnly
-                        timeIntervals={60}
+                        timeIntervals={30}
                         dateFormat="HH:mm"
                         placeholderText="Selecciona la hora de inicio"
+                        timeCaption="Inicio"
                     />
                 </div>
 
@@ -92,9 +93,10 @@ export const CalendarioFechas = ({ onChangeFechas, onChangeRangos }) => {
                         onChange={setHoraFin}
                         showTimeSelect
                         showTimeSelectOnly
-                        timeIntervals={60}
+                        timeIntervals={30}
                         dateFormat="HH:mm"
                         placeholderText="Selecciona la hora de fin"
+                        timeCaption="Fin"
                     />
                 </div>
 

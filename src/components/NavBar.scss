@@ -18,14 +18,19 @@
   color: var(--primary);
 }
 
-.toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: block;
-  padding: 0;
-}
-// icono hamburguesa
+  .toggle { 
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 40px; 
+    height: 40px;
+    padding: 0; 
+  }
+
+/* icono hamburguesa */
 .hamburger,
 .hamburger::before,
 .hamburger::after {
@@ -47,7 +52,7 @@
   transform: translateY(5px);
 }
 
-// icono X
+/* icono X */
 .hamburger.abrir {
   background-color: transparent;
 }
@@ -60,7 +65,7 @@
   transform: rotate(-45deg);
 }
 
-// Menú móvil - Abrir desde la derecha
+/* Menú móvil - Abrir desde la derecha */
 .navbar {
   position: fixed;
   top: 70px;

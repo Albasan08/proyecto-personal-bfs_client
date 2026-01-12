@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Poppins:wght@300;400;500;600&amp;display=swap');
 
-// VALORES REUTILIZABLES
+/* VALORES REUTILIZABLES */
 :root {
-    // Colors
+    /* Colors */
     --primary: #c33149;
     --secondary: #A8C256;
     --tan: #C29979;
@@ -11,16 +11,16 @@
     --brown: #C29979;
     --text: #0a0a0a;
 
-    //Breakpoints
+    /* Breakpoints */
     --breakpoint-tablet: 768px;
     --breakpoint-desktop: 992px;
     --breakpoint-landscape: 1200px;
 
-    //Tipografías
+    /* Tipografías */
     --font-title: "Playfair Display", serif;
     --font-text: 'Poppins', sans-serif;
 
-    // Tipografías tamaños
+    /* Tipografías tamaños */
     --h1: 2.2rem;
     --h2: 1.8rem;
     --h3: 1.5rem;
@@ -30,7 +30,7 @@
     --body: 1rem;
 }
 
-// SETEA TODO
+/* SETEA TODO */
 * {
     margin: 0;
     padding: 0;
@@ -40,7 +40,7 @@
 }
 
 select {
-    all: unset; // Para quitar el estilo predefinido del navegador
+    all: unset; /* Para quitar el estilo predefinido del navegador */
     box-sizing: border-box;
 }
 
@@ -55,7 +55,7 @@ select {
     font-family: var(--font-text);
     font-size: 1rem;
     color: var(--text);
-    // Quita la flecha
+    /* Quita la flecha */
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -73,7 +73,7 @@ select:focus {
     box-shadow: 0 0 0 3px rgba(162, 37, 34, 0.15);
 }
 
-// Clases flexbox
+/* Clases flexbox */
 .container {
     width: 100%;
     margin: 0 auto;
@@ -113,7 +113,7 @@ body {
         #F3E3D4 40%, 
         #E8D3C0 100%) no-repeat fixed;
 
-    background-size: cover; // Cubre todo el espacio
+    background-size: cover; /* Cubre todo el espacio */
 }
 
 .loading {
@@ -232,7 +232,7 @@ html, body {
     flex-direction: column; 
 } 
 
-// BOTONES
+/* BOTONES */
 .btn-principal {
     width: 100%;
     padding: 1rem;
@@ -254,17 +254,17 @@ html, body {
     margin-bottom: 1rem;
 }
 
-// Animación cuando se pasa por encima
+/* Animación cuando se pasa por encima */
 .btn-principal:hover {
     background-color: var(--darkred);
-    transform: translateY(-2px); // Eleva el botón
-    box-shadow: 0 10px 22px rgba(162, 37, 34, 0.35); // "Agranda la sombra paralela"
+    transform: translateY(-2px); /* Eleva el botón */
+    box-shadow: 0 10px 22px rgba(162, 37, 34, 0.35); /* "Agranda la sombra paralela" */
 }
 
-// Animación cuando se pulsa
+/* Animación cuando se pulsa */
 .btn-principal:active {
-    transform: translateY(0); // Vuelve a su posición original
-    box-shadow: 0 4px 12px rgba(162, 37, 34, 0.2); // La sombra se hace más pequeña
+    transform: translateY(0); /* Vuelve a su posición original */
+    box-shadow: 0 4px 12px rgba(162, 37, 34, 0.2); /* La sombra se hace más pequeña */
 }
 
 .btn-secundario {
@@ -288,22 +288,22 @@ html, body {
         box-shadow 0.2s ease;
 }
 
-// Animación cuando se pasa por encima
+/* Animación cuando se pasa por encima */
 .btn-secundario:hover {
     background-color: #f2f2f2;
     border-color: var(--primary);
     color: var(--darkred);
-    transform: translateY(-2px); // Eleva el botón
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08); // "Agranda la sombra paralela"
+    transform: translateY(-2px); /* Eleva el botón *7
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08); /* "Agranda la sombra paralela" */
 }
 
-// Animación cuando se pulsa
+/* Animación cuando se pulsa */
 .btn-secundario:active {
-    transform: translateY(0); // Vuelve a su posición original
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); // La sombra se hace más pequeña
+    transform: translateY(0); /* Vuelve a su posición original */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); /* La sombra se hace más pequeña */
 }
 
-// Popup
+/* Popup */
 .overlay {
     position: fixed;
     top: 0;
