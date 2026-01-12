@@ -10,26 +10,32 @@ import "react-datepicker/dist/react-datepicker.css";
 // IMPORTACIONES PROPIAS
 import './CalendarioFechas.scss'
 
-
+/**
+ * Componente que permite seleccionar días y rangos de hora para programar la experiencia
+ * @param {Prop} onChangeFechas
+ * @param {Prop} onChangeRangos
+ * @returns Días y rangos de hora para programar
+ */
 export const CalendarioFechas = ({ onChangeFechas, onChangeRangos }) => {
-
+    // Estado de fechas
     const [fechasSeleccionadas, setFechasSeleccionadas] = useState([]);
-    
+    // Estados de horas
     const [horaInicio, setHoraInicio] = useState(null);
     const [horaFin, setHoraFin] = useState(null);
     const [rangosHoras, setRangosHoras] = useState([]);
     // Manejar fechas
     const actualizarFechas = (fechas) => {
-        
+        // Un array para que no de error
         const nuevasFechas = fechas || [];
+
         setFechasSeleccionadas(nuevasFechas);
-        //console.log(nuevasFechas)
+        // Para pasarle al componente padre mediante props
         onChangeFechas(nuevasFechas)
 
     };
-
     // Manejar horas
-    // Añadir horas
+
+    // Añadir rango de horas
     const anadirRangoHora = () => {
 
         if (!horaInicio || !horaFin) return;
@@ -38,7 +44,7 @@ export const CalendarioFechas = ({ onChangeFechas, onChangeRangos }) => {
             inicio: horaInicio,
             fin: horaFin
         }
-
+        // Para no mutar el estado de rangos
         const nuevoRango = [...rangosHoras, nuevaHora]
         
         setRangosHoras(nuevoRango)
@@ -50,7 +56,7 @@ export const CalendarioFechas = ({ onChangeFechas, onChangeRangos }) => {
     };
     // Eliminar rango de horas
     const eliminarRangoHora = (index) => {
-
+        // _ para ignorar el valor (no se necesita), i para índice actual. Coger los elementos cuyo índice no se quieren eliminar
         const nuevosRangos = rangosHoras.filter((_, i) => i !== index); 
 
         setRangosHoras(nuevosRangos); 

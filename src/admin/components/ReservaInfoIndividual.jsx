@@ -2,6 +2,11 @@
 import { BotonReserva } from './BotonReserva'
 import './ReservaInfoIndividual.scss'
 
+/**
+ * Componente que muestra toda la información de una reserva
+ * @param {Object} reserva Objeto con toda la información de una reserva
+ * @returns Información de la reserva
+ */
 export const ReservaInfoIndividual = ({ reserva }) => {
     return (
         <article className="card-info">

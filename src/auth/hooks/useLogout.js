@@ -6,8 +6,11 @@ import { useNavigate } from "react-router-dom";
 // IMPORTACIONES PROPIAS
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
+/**
+ * Hook que gestiona el logout de usuarios registrados
+ * @returns error, usuarioGoogle y función de cerrar sesión
+ */
 export const useLogout = () => {
-  //console.log("ENTRANDO A HOOK DE LOGOUT")
   // Estados de userGoogle y error
   const [error, setError] = useState(null);
   const [userGoogle, setUserGoogle] = useState(null);
@@ -19,8 +22,6 @@ export const useLogout = () => {
 
     try {
       await signOut(auth);
-      //console.log("SESIÓN CERRADA DESDE HOOK USELOGOUT")
-
       // Conectar con back para borrar cookies y redirigir
       const respuesta = await fetch(`${APIKEY_BACK}auth/logout`, {
         method: "POST",

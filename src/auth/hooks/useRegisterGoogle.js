@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 import { redirigirPorRol } from "../helpers/redirigirPorRol";
 
+/**
+ * Hook que gestiona la creación de usuarios con firebase
+ * @returns Objeto que se enviará a la BBDD
+ */
 export const useRegisterGoogle = () => {
     
     //Estados
@@ -23,16 +27,13 @@ export const useRegisterGoogle = () => {
         const result = createUserWithEmailAndPassword(auth, emailRegister, contraseniaRegister)
 
         .then((result) => {
-            //console.log(result);
-            const user = result.user;
-            //console.log(user);
 
+            const user = result.user;
             // Cambiar estados
             setUserGoogleNew(user);
             setUidGoogle(user.uid)
             setError(null);
             setToken(user.accessToken)
-            //console.log(token)
 
             //Construir objeto que se mandará a la BBDD de postgres algunos desde firebase otros desde el formulario
             const newRegisterUser = {
@@ -46,7 +47,6 @@ export const useRegisterGoogle = () => {
                 rol_user: "user",
                 token: user.accessToken
             }
-            //console.log(newRegisterUser)
 
             // Conexión con la BBDD desde el back y redirigir
             const conexionBackBBDD = async () => {
@@ -59,7 +59,7 @@ export const useRegisterGoogle = () => {
                     });
 
                     const data = await respuesta.json();
-                    //console.log(data);
+
                     const redirect = await redirigirPorRol(); 
                     navigate(redirect, { replace: true });
 

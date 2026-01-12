@@ -11,6 +11,11 @@ import { PopUpEliminarExperiencia } from "./PopUpEliminarExperiencia";
 import { useFetch } from "../../hooks/useFetch";
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
+/**
+ * Componente que gestiona la edición de la experiencia
+ * @param {Object} experiencia 
+ * @returns Popup para eliminar o acción de editar experiencia
+ */
 export const FormularioEditarExperiencia = ({ experiencia }) => {
 
     const { fetchData, data, error, loading, setData } = useFetch();
@@ -19,7 +24,7 @@ export const FormularioEditarExperiencia = ({ experiencia }) => {
 
     const navigate = useNavigate();
     const { id } = useParams();
-    //console.log(experiencia, "DESDE COMPONENTE FORMULARIO")
+    
     const editorCorto = useEditor({
         extensions: [StarterKit, TextStyle],
         content: experiencia?.desc_corta_expe || "" // Si no no carga el editor
@@ -126,15 +131,15 @@ export const FormularioEditarExperiencia = ({ experiencia }) => {
 
                         {/*Gestión de los errores */}
                         {data && (
-                            <div>
-                                <p className="oks">{data.mensaje}</p>
+                            <div className="oks">
+                                <p>{data.mensaje}</p>
                             </div>
                         )}
 
                         {/*Gestión de la confirmación*/}
                         {error && (
-                            <div>
-                                <p className="errores">{error}</p>
+                            <div className="errores">
+                                <p>{error}</p>
                             </div>
                         )}
 

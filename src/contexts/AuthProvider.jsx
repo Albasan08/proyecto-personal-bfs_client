@@ -5,7 +5,10 @@ import { onAuthStateChanged, getAuth } from 'firebase/auth';
 // IMPORTACIONES PROPIAS
 import { AuthContext } from "./AuthContext";
 
-
+/**
+ * Proveedor de autenticación que se usa en todas las rutas de la app
+ * @param {Object} Children componentes hijos que tendrán acceso al contexto
+ */
 export const AuthProvider = ({ children }) => {
 
   // Crear el estado inicial

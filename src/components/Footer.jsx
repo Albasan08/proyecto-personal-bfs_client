@@ -1,6 +1,10 @@
 // IMPORTACIONES PROPIAS
 import './Footer.scss'
 
+/**
+ * Componente footer
+ * @returns Componente footer
+ */
 export const Footer = () => {
   return (
     <>

@@ -8,6 +8,11 @@ import './CardExpe.scss'
 import { BotoneraProgramarExperiencia } from "../program/components/BotoneraProgramarExperiencia";
 import { BotoneraVerMasExperiencia } from "../user/components/BotoneraVerMasExperiencia";
 
+/**
+ * Componente que muestra la información de la experiencia
+ * @param {Object} experiencia Objeto con toda la información de la experiencia
+ * @returns Toda la información de la experiencia
+ */
 export const CardExperiencia = ({ experiencia }) => {
     // Para pintar los botones en función del rol
     const rol = Cookies.get("rol");

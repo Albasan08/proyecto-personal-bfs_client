@@ -7,7 +7,10 @@ import { useNavigate } from "react-router-dom";
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 import { redirigirPorRol } from "../helpers/redirigirPorRol";
 
-
+/**
+ * Hook que gestiona el inicio de sesión con usuario y contraseña
+ * @returns error, user, token y función de inicio de sesión
+ */
 export const useLoginEmailContra = () => {
 
   const [errorEmail, setErrorEmail] = useState(null); // Dividir los errores, sino el componente no sabe cual coger de las 2 opciones
@@ -23,10 +26,7 @@ export const useLoginEmailContra = () => {
       .then((result) => {
 
         const user = result.user;
-        //console.log(user);
         const token = user.accessToken;
-        //console.log(token)
-
         // Cambiar estados
         setUserGoogle(user);
         setTokenGoogle(token);
@@ -38,8 +38,6 @@ export const useLoginEmailContra = () => {
           token: user.accessToken,
           uid_user: user.uid
         }
-        //console.log(LoginUser)
-
         // Conexión con la BBDD desde el back y redirigir
         const conexionBackBBDD = async () => {
           try {
@@ -51,7 +49,6 @@ export const useLoginEmailContra = () => {
             });
 
             const data = await respuesta.json();
-            //console.log(data);
 
             const redirect = await redirigirPorRol(); 
             navigate(redirect, { replace: true });

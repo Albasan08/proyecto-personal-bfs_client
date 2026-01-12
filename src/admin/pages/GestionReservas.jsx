@@ -8,6 +8,10 @@ import { ReservasInfo } from '../components/ReservasInfo';
 import { useFetch } from '../../hooks/useFetch';
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
+/**
+ * Página que gestiona la información de la reserva
+ * @returns Información de la reserva
+ */
 export const GestionReservas = () => {
 
   const { fetchData, data, error, loading } = useFetch();

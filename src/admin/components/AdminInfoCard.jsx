@@ -6,6 +6,10 @@ import { useFetch } from '../../hooks/useFetch';
 import './AdminInfoCard.scss'
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
+/**
+ * Componente que obtiene toda la información del usuario con rol admin
+ * @returns Información del usuario
+ */
 export const AdminInfoCard = () => {
 
     const { fetchData, data, error, loading } = useFetch();

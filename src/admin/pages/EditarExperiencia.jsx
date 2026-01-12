@@ -9,7 +9,10 @@ import { Footer } from "../../components/Footer";
 import { useFetch } from "../../hooks/useFetch";
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
-
+/**
+ * Página que gestiona la edición de experiencias
+ * @returns Formulario de editar experiencia
+ */
 export const EditarExperiencia = () => {
 
   const { id } = useParams(); 
@@ -43,5 +46,3 @@ export const EditarExperiencia = () => {
     </>
   )
 }
-
-// Pendiente preguntar put después de eliminar

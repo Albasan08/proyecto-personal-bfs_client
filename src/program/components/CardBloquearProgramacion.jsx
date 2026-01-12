@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { CalendarioFechas } from '../components/CalendarioFechas'
 import './CardBloquearProgramacion.scss'
 
-
+// Pendiente completar
 export const CardBloquearProgramacion = () => {
 
   const [fechasBloqueadas, setFechasBloqueadas] = useState([]);

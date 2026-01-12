@@ -10,21 +10,21 @@ article {
 
     --rdp-accent-color: var(--primary) !important; 
 }
-// Cabecera mes
+/* Cabecera mes */
 .calendario-programacion .rdp-caption { 
     font-size: 1.25rem; 
     font-weight: 600; 
     color: var(--text); 
     margin-bottom: 0.5rem; 
 }
-// Días semana
+/* Días semana */
 .calendario-programacion .rdp-head_cell { 
     font-size: 0.85rem; 
     font-weight: 600; 
     color: var(--primary); 
     padding-bottom: 0.4rem; 
 }
-//Días
+/* Días */
 .calendario-programacion .rdp-day { 
     font-size: 0.95rem; 
     border-radius: 8px; 
@@ -36,21 +36,26 @@ article {
     cursor: pointer; 
     color: #fff !important;
 }
-// Días elegidos
+/*  Días elegidos */
 .calendario-programacion .rdp .rdp-day--selected { 
     background: var(--primary) !important; 
     color: #fff !important; 
     font-weight: 600; 
     border-radius: 8px;
 }
-// Días deshabilitados 
+/* Días deshabilitados */
 .calendario-programacion .rdp-day_disabled { 
     opacity: 0.4; 
-    cursor: not-allowed; 
+    cursor: not-allowed; /*Muestra el cursor como un icono de prohibido*/
 }
 
 .calendario-container .btn-principal, 
-.calendario-container .btn-secundario { width: 100%; margin-top: 1rem; align-self: stretch; /* fuerza a ocupar el ancho */ }
+.calendario-container .btn-secundario { 
+    width: 100%; 
+    margin-top: 1rem; 
+    align-self: stretch; /* fuerza a ocupar el ancho */ 
+}
+
 .calendario-container h3 {
     color: var(--brown)
 }

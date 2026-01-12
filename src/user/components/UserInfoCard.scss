@@ -1,5 +1,5 @@
 section.user-info {
-    background-color: transparent !important;
+    background-color: transparent !important; /*Para quitar el color de fondo y la sombra paralela del section, cuyo css hereda*/
     box-shadow: none !important;
 }
 
@@ -13,18 +13,18 @@ section.user-info {
     border: 1px solid rgba(0,0,0,0.05);
 }
 
-.user-card, h3
+.user-card h3,
 .user-reservas h3 {
     color: var(--secondary);
 }
 
 .lista-reservas { 
-    list-style: none; 
+    list-style: none; /*Para quitas los puntos de lista*/
     padding: 0; 
     margin: 0; 
     
     .reserva-item { 
-        background: color-mix(in srgb, var(--tan) 30%, transparent);; 
+        background: color-mix(in srgb, var(--tan) 30%, transparent); /*Mezcla el 30% del color tan con transparencia*/
         border-radius: 10px; 
         padding: 1.2rem 1.5rem; 
         margin-bottom: 1rem; 

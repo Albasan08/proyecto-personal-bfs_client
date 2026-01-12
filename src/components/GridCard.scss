@@ -2,7 +2,7 @@
     background-color: transparent;
     box-shadow: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /*Crea un grid con un mínimo de 260px, que puede ocupar todo el espacio disponible(1fr), el nº de columnas se ajuntas automáticamente según el ancho de la pantalla*/
     gap: 2rem;
     padding: 2rem 1rem;
 }

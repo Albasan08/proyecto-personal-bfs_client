@@ -10,9 +10,12 @@ import { InfoDetalladaExperienciaId } from "../components/InfoDetalladaExperienc
 import { useFetch } from "../hooks/useFetch"
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
-
+/**
+ * Página donde se muestra toda la información de la experiencia
+ * @returns Componente donde se muestra la información de la experiencia y calendario para reservar
+ */
 export const DetalleExperiencia = () => {
-
+  // Desestructurar los componentes de los
   const { fetchData, data, error, loading } = useFetch();
 
   const { id } = useParams();
@@ -28,7 +31,9 @@ export const DetalleExperiencia = () => {
       <main>
 
         {error && (
-          <p className="errores">{error}</p>
+          <div className="errores">
+            <p>{error}</p>
+          </div>
         )}
 
         {loading && (

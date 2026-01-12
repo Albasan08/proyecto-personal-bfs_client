@@ -7,8 +7,11 @@ import { useNavigate } from "react-router-dom";
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 import { redirigirPorRol } from "../helpers/redirigirPorRol";
 
+/**
+ * Hook que gestiona el inicio de sesión mediante ventana emergente de Google
+ * @returns token, user, error y función de login
+ */
 export const useLoginGoogle = () => {
-
     //Estados de userGoogle, error y token
     const [errorGoogle, setErrorGoogle] = useState(null);
     const [userGoogle, setUserGoogle] = useState(null);
@@ -23,12 +26,8 @@ export const useLoginGoogle = () => {
             const result = await signInWithPopup(auth, provider);
 
             const credential = GoogleAuthProvider.credentialFromResult(result);
-            //console.log(credential)
             const token = credential.accessToken;
-            //console.log(token)
             const user = result.user;
-            //console.log(user)
-
             // Cambiar estados
             setUserGoogle(user);
             setTokenGoogle(token);
@@ -40,7 +39,6 @@ export const useLoginGoogle = () => {
                 token: token,
                 uid_user: user.uid
             }
-            //console.log(LoginUser);
 
             // Conectar con BBDD
             const respuesta = await fetch(`${APIKEY_BACK}auth/login`, {
@@ -51,7 +49,6 @@ export const useLoginGoogle = () => {
             });
 
             const data = await respuesta.json();
-            //console.log(data);
             // Redirigir por rol
             const redirect = await redirigirPorRol(); 
             navigate(redirect, { replace: true });

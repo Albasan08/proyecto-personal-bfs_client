@@ -1,6 +1,13 @@
 // IMPORTACIONES DE TERCEROS
 import { useState } from "react";
 
+/**
+ * Hook fetch para hacer peticiones al back
+ * @param {String} url - URL base
+ * @param {String} method - Método http
+ * @param {*} body - Cuerpo de la petición
+ * @returns Object - data, error, loading, setData
+ */
 export const useFetch = (url, method = "GET", body = null) => {
 
     const [data, setData] = useState(null);
@@ -30,11 +37,11 @@ export const useFetch = (url, method = "GET", body = null) => {
                 options.body = body;
 
             };
-            //console.log(options, "DESDE HOOK FETCHDATA");
+            
             const respuesta = await fetch(`${url}`, options);
             // Si todo va bien - Data
             const data = await respuesta.json();
-            //console.log(data, "DATA DESDE HOOK");
+            
             setData(data);
             setError(null);
             setLoading(false);

@@ -22,7 +22,10 @@ import {
 import { PrivateRoute } from "../auth/components/PrivateRoute"
 import { RedireccionRol } from "../auth/components/RedireccionRol"
 
-
+/**
+ * Componente que recoge todas las rutas
+ * @returns Las rutas con sus páginas
+ */
 export const AppRoutes = () => {
   return (
     <>

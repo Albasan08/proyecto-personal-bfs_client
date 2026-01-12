@@ -10,6 +10,10 @@ import { EditorDescripcion } from "./EditorDescripcion";
 import { useFetch } from "../../hooks/useFetch";
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
+/**
+ * 
+ * @returns 
+ */
 export const FormularioCrearExperiencia = () => {
 
     const { fetchData, data, error, loading, setData } = useFetch();
@@ -46,7 +50,6 @@ export const FormularioCrearExperiencia = () => {
         const url = "admin/crear"
         // Conexión con el back
         fetchData(`${APIKEY_BACK}${url}`, "POST", formData);
-        //console.log(data);
         // Borrar el formulario una vez enviado y mensajes de ok o error
         event.target.reset();
         editorCorto.commands.clearContent();
@@ -93,15 +96,15 @@ export const FormularioCrearExperiencia = () => {
 
             {/*Gestión de la confirmación */}
             {data && (
-                <div>
-                    <p className="oks">{data.mensaje}</p>
+                <div className="oks">
+                    <p>{data.mensaje}</p>
                 </div>
             )}
 
             {/*Gestión de los errores*/}
             {error && (
-                <div>
-                    <p className="errores">{error}</p>
+                <div className="errores">
+                    <p>{error}</p>
                 </div>
             )}
 

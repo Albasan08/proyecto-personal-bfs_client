@@ -2,6 +2,11 @@
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 import './InfoDetalladaExperienciaId.scss'
 
+/**
+ * Componente que muestra toda la información de la experiencia por ID
+ * @param {Object} experiencia Objeto con toda la información de la experiencia
+ * @returns 
+ */
 export const InfoDetalladaExperienciaId = ({ experiencia }) => {
     return (
         <>

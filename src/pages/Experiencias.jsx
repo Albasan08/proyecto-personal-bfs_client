@@ -1,5 +1,3 @@
-// IMPORTACIONES DE TERCEROS
-
 // IMPORTACIONES PROPIAS
 import { useEffect } from "react"
 import { Footer } from "../components/Footer"
@@ -8,8 +6,12 @@ import { NavBar } from "../components/NavBar"
 import { useFetch } from "../hooks/useFetch"
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
+/**
+ * Página con todas las experiencias
+ * @returns Grid en el que se muestran todas las experiencias
+ */
 export const Experiencias = () => {
-
+  // Desestructurar propiedades del hook fetch
   const { fetchData, data, error, loading} = useFetch();
 
   const url = "experiencias"
@@ -36,8 +38,8 @@ export const Experiencias = () => {
         )}
 
        {error && (
-          <div>
-            <p className="errores">{data.mensaje}</p>
+          <div className="errores">
+            <p>{data.mensaje}</p>
           </div>
         )}
       </main>

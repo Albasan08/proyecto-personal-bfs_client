@@ -2,13 +2,15 @@
 import Cookies from 'js-cookie';
 import { Navigate } from 'react-router-dom';
 
-// IMPORTACIONES PROPIAS
-
+/**
+ * Componente que redirige según el rol
+ * @param {Prop} children 
+ * @returns navigate para redirigir según el rol
+ */
 export const RedireccionRol = ({ children, redirigir }) => {
     // Coger token y rol de cookies
     const token = Cookies.get("token");
     const rol = Cookies.get("rol");
-    //console.log(rolCookie);
      
     if(token && rol) {
         const redirigirSegunRol = {

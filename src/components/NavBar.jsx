@@ -2,12 +2,15 @@
 import { NavLink } from "react-router-dom";
 import Cookies from "js-cookie";
 
-
 // IMPORTACIONES PROPIAS
 import { useState } from "react";
 import { useLogout } from "../auth/hooks/useLogout"
 import './NavBar.scss'
 
+/**
+ * Componente de menú de navegación
+ * @returns Menú de navegación
+ */
 export const NavBar = () => {
 
   const [abrir, setAbrir] = useState(false);
@@ -15,9 +18,7 @@ export const NavBar = () => {
   const { cerrarSesionGoogle } = useLogout();
   
   const token = Cookies.get("token");
-  //console.log(token);
   const rol = Cookies.get("rol");
-  //console.log(rol);
 
   return (
     <>

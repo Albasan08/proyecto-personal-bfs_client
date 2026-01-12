@@ -6,6 +6,12 @@ import './BotonReserva.scss'
 import { useFetch } from '../../hooks/useFetch';
 const APIKEY_BACK = import.meta.env.VITE_APIKEY_SERVER;
 
+/**
+ * Botón toggle que cambia el estado de la reserva
+ * @param {Number} idReserva Id de la reserva a gestionar
+ * @param {Boolean} estadoInicial Booleano con la información del estado en la BBDD
+ * @returns True o False
+ */
 export const BotonReserva = ({ idReserva, estadoInicial }) => {
 
   const [estado, setEstado] = useState(estadoInicial);

@@ -2,13 +2,15 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
-
 // IMPORTACIONES PROPIAS
 import { useRegisterGoogle } from "../hooks/useRegisterGoogle";
 import { ErroresAuth } from "./ErroresAuth";
 
+/**
+ * Componente formulario para registrar usuarios nuevos
+ * @returns Formulario para registrar usuarios nuevos
+ */
 export const FormularioRegisterAuth = () => {
-
     // Requerir estados de los campos del formulario que se actualizarán después
     const [emailRegister, setEmailRegister] = useState("");
     const [contraseniaRegister, setContraseniaRegister] = useState("");
@@ -36,11 +38,10 @@ export const FormularioRegisterAuth = () => {
 
     // Evento para capturar los datos de los campos
     const handleDatosFormularioRegister = async (event) => {
+        
         event.preventDefault();
 
-        // Para limpiar los errores
         setErrorConexion(errorConexion);
-
         // Capturar datos formulario
         const emailRegister = event.target.emailRegister.value.trim().toLowerCase();
         const contraseniaRegister = event.target.contraseniaRegister.value.trim();
@@ -53,7 +54,6 @@ export const FormularioRegisterAuth = () => {
         const apellidoLimpio = apellidoRegister.trim().charAt(0).toUpperCase() + apellidoRegister.slice(1).toLowerCase();
         
         const provinciaRegister = event.target.provinciaRegister.value;
-
         // Setear estados
         setEmailRegister(emailRegister);
         setContraseniaRegister(contraseniaRegister);
@@ -62,15 +62,12 @@ export const FormularioRegisterAuth = () => {
         setNombreRegister(nombreLimpio);
         setApellidoRegister(apellidoLimpio);
         setProvinciaRegister(provinciaRegister);
-
         // Si las contraseñas no coinciden
         if (contraseniaRegister !== contraseniaRegister2) { 
             setErrorConexion("Las contraseñas no coinciden"); 
-
             // Borrar el error después de varios segundos para que no permanezca en pantalla
             setTimeout(() => { setErrorConexion(null); }, 5000); // 3 segundos
         }
-        
         // Conectar con hook
         try {
             const user = await registrarConLogin(emailRegister, contraseniaRegister, contraseniaRegister2, nombreRegister, apellidoRegister, provinciaRegister);
@@ -82,13 +79,13 @@ export const FormularioRegisterAuth = () => {
   return (
     <>
         <section>
-        <div>
-            <h1>Crea una cuenta nueva</h1>
-            <h2>Únete a la mejor experiencia de enoturismo de Rioja Alavesa</h2>
-        </div>
+            <div>
+                <h1>Crea una cuenta nueva</h1>
+                <h2>Únete a la mejor experiencia de enoturismo de Rioja Alavesa</h2>
+            </div>
 
         <article>
-            <form className="formulario-auth flex-container" onSubmit={handleDatosFormularioRegister} action="/auth/register" method="post">
+            <form className="formulario-auth flex-container" encType="application/x-www-form-urlencoded" onSubmit={handleDatosFormularioRegister} action="/auth/register" method="post">
                     <label htmlFor="emailRegister">Correo electrónico:</label>
                     <input type="text" id="emailRegister" name="emailRegister" required placeholder="ejemplo@ejemplo.com"></input>
     
@@ -122,7 +119,9 @@ export const FormularioRegisterAuth = () => {
         {<ErroresAuth errorMessage={error?.message}/>}
         
         {/*Gestión de errores de que las contraseñas no coinciden */}
-        {errorConexion && ( <p className="error">{errorConexion}</p> )}
+        {errorConexion && ( 
+            <p className="error">{errorConexion}</p> 
+        )}
 
         <div>
             <p>¿Ya tienes cuenta?</p>

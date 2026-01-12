@@ -8,44 +8,41 @@ import { useLoginEmailContra } from "../hooks/useLoginEmailContra";
 import { ErroresAuth } from "./ErroresAuth";
 import './FormularioLoginAuth.scss'
 
+/**
+ * Componente formulario para iniciar sesión con usuario y contraseña
+ * @returns Formulario para iniciar sesión
+ */
 export const FormularioLoginAuth = () => {
 
     // Requerir estados de los campos del formulario que se actualizarán después
     const [emailLogin, setEmailLogin] = useState("");
     const [contraseniaLogin, setContraseniaLogin] = useState("");
     const [error, setError] = useState(null);
-
     // Requerir función login con Google
     const { loginConGoogle, errorGoogle } = useLoginGoogle();
-
     // Requerir función login con email y contraseña
     const { inicioSesionEmailContra, errorEmail } = useLoginEmailContra();
-
-    // Recoger errores
-
     // Evento para capturar los datos de los campos y conectar con hook de login con email y contraseña
     const handleDatosFormularioLogin = async (event) => {
+       
         event.preventDefault();
 
-        // Para limpiar los errores
         setError(null); 
-
         // Capturar datos formulario
         const emailLogin = event.target.emailLogin.value;
-        //console.log(emailLogin);
         const contraseniaLogin = event.target.contraseniaLogin.value;
-        //console.log(contraseniaLogin);
-
         // Setear estados
         setEmailLogin(emailLogin);
         setContraseniaLogin(contraseniaLogin);
-
         // Conectar con hook
         try {
+
             const user = await inicioSesionEmailContra(emailLogin, contraseniaLogin);
+        
         } catch(error) {
-            console.log(error)
-            // Pendiente gestionar error
+
+            setError(error);
+
         }
     }
 
@@ -58,7 +55,7 @@ export const FormularioLoginAuth = () => {
         </div>
 
         <article>
-            <form className="formulario-auth flex-container" onSubmit={handleDatosFormularioLogin} action="/auth/login" method="post">
+            <form className="formulario-auth flex-container" onSubmit={handleDatosFormularioLogin} action="/auth/login" method="post"encType="application/x-www-form-urlencoded">
                 <label htmlFor="emailLogin">Correo electrónico:</label>
                 <input type="text" id="emailLogin" name="emailLogin" required placeholder="ejemplo@ejemplo.com"></input>
 

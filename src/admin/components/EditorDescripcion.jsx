@@ -4,23 +4,28 @@ import { EditorContent, useEditorState } from "@tiptap/react"
 // IMPORTACIONES PROPIAS 
 import './EditorDescripcion.scss'
 
+/**
+ * Componente que gestiona el texto enriquecido
+ * @param {Componente} editor 
+ * @returns Contenedor de texto enriquecido
+ */
 export const EditorDescripcion = ({ editor }) => {
 
-    if(!editor) return null
+  if(!editor) return null
 
-    const editorState = useEditorState({
-        editor, 
-        selector: ctx => {
-        return { 
-            isBold: ctx.editor.isActive('bold') ?? false,
-            canBold: ctx.editor.can().chain().toggleBold().run() ?? false,
-            isBulletList: ctx.editor.isActive('bulletList') ?? false,
-            isOrderedList: ctx.editor.isActive('orderedList') ?? false,
-            canUndo: ctx.editor.can().chain().undo().run() ?? false,
-            canRedo: ctx.editor.can().chain().redo().run() ?? false,
-            }
-        },
-    });
+  const editorState = useEditorState({
+    editor, 
+    selector: ctx => {
+    return { 
+      isBold: ctx.editor.isActive('bold') ?? false,
+      canBold: ctx.editor.can().chain().toggleBold().run() ?? false,
+      isBulletList: ctx.editor.isActive('bulletList') ?? false,
+      isOrderedList: ctx.editor.isActive('orderedList') ?? false,
+      canUndo: ctx.editor.can().chain().undo().run() ?? false,
+      canRedo: ctx.editor.can().chain().redo().run() ?? false,
+      }
+    },
+  });
 
   return (
     <div className="control-group">

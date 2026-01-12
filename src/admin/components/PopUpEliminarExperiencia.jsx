@@ -1,3 +1,9 @@
+/**
+ * Popup de seguridad que se muestra al querer eliminar una experiencia
+ * @param {Function} confirmarEliminar Función que confirma la eliminación de la experiencia
+ * @param {Function} cancelarEliminar Función que cancela la eliminación de la experiencia
+ * @returns Cancelar o Confirmar experiencia
+ */
 export const PopUpEliminarExperiencia = ({ confirmarEliminar, cancelarEliminar }) => {
   return (
     <>

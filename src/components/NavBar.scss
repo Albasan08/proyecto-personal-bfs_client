@@ -1,7 +1,7 @@
 .navbar-container {
-    background: linear-gradient( 
-        to top, transparent, var(--brown)
-    );
+  background: linear-gradient( 
+    to top, transparent, var(--brown)
+  );
   width: 100%;
   padding: 1rem 1.5rem;
   color: var(--text);
@@ -18,22 +18,22 @@
   color: var(--primary);
 }
 
-  .toggle { 
-    background: none; 
-    border: none; 
-    cursor: pointer; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    width: 40px; 
-    height: 40px;
-    padding: 0; 
-  }
+.toggle { 
+  background: none; 
+  border: none; 
+  cursor: pointer; /*Hace que el elemento sea clicable*/
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 40px; 
+  height: 40px;
+  padding: 0; 
+}
 
-/* icono hamburguesa */
-.hamburger,
-.hamburger::before,
-.hamburger::after {
+/* Icono hamburguesa */
+.hamburger, /*Línea central*/
+.hamburger::before, /*Línea superior*/
+.hamburger::after { /*Línea inferior*/
   content: "";
   display: block;
   width: 28px;

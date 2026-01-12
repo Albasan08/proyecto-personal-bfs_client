@@ -9,7 +9,7 @@
 
 @media (min-width: var(--breakpoint-tablet)) { 
     .reservas-grid { 
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr); /*Divide el contenedor en 2 columnas del mismo ancho*/
     } 
 }
 
